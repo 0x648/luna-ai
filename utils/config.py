@@ -1,13 +1,14 @@
 import json
 
 class Config:
-    _instance = None
+    # 单例模式
+    # _instance = None
     config = None
 
-    def __new__(cls, *args, **kwargs):
-        if not cls._instance:
-            cls._instance = super(Config, cls).__new__(cls)  # 不再传递 *args, **kwargs
-        return cls._instance
+    # def __new__(cls, *args, **kwargs):
+    #     if not cls._instance:
+    #         cls._instance = super(Config, cls).__new__(cls)  # 不再传递 *args, **kwargs
+    #     return cls._instance
 
     def __init__(self, config_file):
         if self.config is None:

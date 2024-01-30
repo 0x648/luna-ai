@@ -127,7 +127,7 @@ class Claude2:
             "completion": {
                 "prompt": f"{prompt}",
                 "timezone": "Asia/Kolkata",
-                "model": "claude-2"
+                "model": "claude-2.1"
             },
             "organization_uuid": f"{self.organization_id}",
             "conversation_uuid": f"{conversation_id}",
@@ -339,7 +339,7 @@ class Claude2:
     
 
     # 获取Claude2的请求结果，共用一个conversation_id，变向记忆功能
-    def get_claude2_resp(self, prompt):
+    def get_resp(self, prompt):
         try:
             resp_content = self.send_message(prompt, self.conversation_id)
             return resp_content

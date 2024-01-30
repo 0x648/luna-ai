@@ -35,18 +35,24 @@ class SQLiteDB:
         finally:
             conn.close()
 
+    # 执行SQLite数据库查询并返回结果
     def fetch_all(self, query, args=None):
         conn = sqlite3.connect(self.db_file)  # 创建新的连接对象
+        # 游标用于执行SQL查询和检索结果
         cursor = conn.cursor()
 
         try:
             if args:
+                # 执行SQL查询，如果提供了参数 args，它将被用来替换查询中的占位符。这是一个防止SQL注入的常见做法
                 cursor.execute(query, args)
             else:
                 cursor.execute(query)
+            # 从数据库游标中获取所有查询结果，并将其作为结果返回。fetchall() 方法返回一个包含查询结果的列表。
             return cursor.fetchall()
+        # 最后，无论try块中的代码是否成功执行，finally 块都会关闭数据库连接，以确保资源得到正确释放，避免资源泄漏。
         finally:
             conn.close()
+            
     # def __init__(self, db_file, max_connections=5):
     #     self.db_file = db_file
     #     self.connection_pool = self._create_connection_pool(max_connections)

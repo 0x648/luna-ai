@@ -112,7 +112,7 @@ font: 75 12pt &quot;微软雅黑&quot;;</string>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="styleSheet">
        <string notr="true">background-color: rgba(255, 255, 255, 0);
-</string>
+font: 75 14pt &quot;微软雅黑&quot;;</string>
       </property>
       <property name="currentIndex">
        <number>0</number>
@@ -136,9 +136,9 @@ background-color: rgba(255, 255, 255, 50);
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-268</y>
-             <width>984</width>
-             <height>10096</height>
+             <y>-6720</y>
+             <width>991</width>
+             <height>11374</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout">
@@ -162,7 +162,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="styleSheet">
                <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout">
+              <layout class="QGridLayout" name="gridLayout" columnstretch="1,8,1">
                <property name="leftMargin">
                 <number>0</number>
                </property>
@@ -175,41 +175,127 @@ background-color: rgba(255, 255, 255, 50);
                <property name="bottomMargin">
                 <number>0</number>
                </property>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_chat_type">
-                 <property name="text">
-                  <string>聊天类型</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_platform">
-                 <property name="autoFillBackground">
-                  <bool>false</bool>
-                 </property>
-                 <property name="text">
-                  <string>平台</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="1">
-                <widget class="QLineEdit" name="lineEdit_after_prompt"/>
-               </item>
-               <item row="0" column="1">
-                <widget class="QComboBox" name="comboBox_platform">
+               <item row="11" column="1">
+                <widget class="QComboBox" name="comboBox_audio_synthesis_type">
                  <property name="cursor">
                   <cursorShape>PointingHandCursor</cursorShape>
                  </property>
                 </widget>
                </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_need_lang">
+               <item row="20" column="0" colspan="2">
+                <widget class="QGroupBox" name="groupBox_read_comment">
+                 <property name="title">
+                  <string>念弹幕</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_75">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_read_comment"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_before_prompt">
                  <property name="text">
-                  <string>回复语言</string>
+                  <string>提示词前缀</string>
                  </property>
                 </widget>
                </item>
-               <item row="15" column="0" colspan="2">
+               <item row="29" column="0" colspan="3">
+                <widget class="QGroupBox" name="groupBox_audio_random_speed">
+                 <property name="title">
+                  <string>音频随机变速</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_53" columnstretch="9,1">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_52" columnstretch="1,2,1,2">
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="lineEdit_audio_random_speed_normal_speed_min"/>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_audio_random_speed_normal_enable">
+                      <property name="text">
+                       <string>普通音频变速</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_audio_random_speed_normal_speed_min">
+                      <property name="text">
+                       <string>速度下限</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="2">
+                     <widget class="QLabel" name="label_audio_random_speed_normal_speed_max">
+                      <property name="text">
+                       <string>速度上限</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QCheckBox" name="checkBox_audio_random_speed_normal_enable">
+                      <property name="text">
+                       <string>启用</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="3">
+                     <widget class="QLineEdit" name="lineEdit_audio_random_speed_normal_speed_max"/>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="label_audio_random_speed_copywriting_enable">
+                      <property name="text">
+                       <string>文案音频变速</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QCheckBox" name="checkBox_audio_random_speed_copywriting_enable">
+                      <property name="text">
+                       <string>启用</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="0">
+                     <widget class="QLabel" name="label_audio_random_speed_copywriting_speed_min">
+                      <property name="text">
+                       <string>速度下限</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="1">
+                     <widget class="QLineEdit" name="lineEdit_audio_random_speed_copywriting_speed_min"/>
+                    </item>
+                    <item row="4" column="2">
+                     <widget class="QLabel" name="label_audio_random_speed_copywriting_speed_max">
+                      <property name="text">
+                       <string>速度上限</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="3">
+                     <widget class="QLineEdit" name="lineEdit_audio_random_speed_copywriting_speed_max"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="0" column="1">
+                   <spacer name="horizontalSpacer_8">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="21" column="0" colspan="2">
                 <widget class="QGroupBox" name="groupBox_read_user_name">
                  <property name="title">
                   <string>念用户名</string>
@@ -270,24 +356,53 @@ background-color: rgba(255, 255, 255, 50);
                  </layout>
                 </widget>
                </item>
-               <item row="12" column="0" colspan="2">
+               <item row="17" column="0" colspan="2">
+                <widget class="QGroupBox" name="groupBox_play_audio">
+                 <property name="title">
+                  <string>音频播放</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_68">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_play_audio"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_platform">
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>平台</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_need_lang">
+                 <property name="text">
+                  <string>回复语言</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="16" column="0" colspan="2">
                 <widget class="QGroupBox" name="groupBox_show_box">
                  <property name="title">
                   <string>自定义显示板块</string>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_62">
-                  <item row="0" column="0">
+                  <item row="1" column="0">
                    <layout class="QGridLayout" name="gridLayout_show_box"/>
                   </item>
                  </layout>
                 </widget>
                </item>
-               <item row="29" column="0" colspan="3">
+               <item row="35" column="0" colspan="3">
                 <widget class="QGroupBox" name="groupBox_claude2">
                  <property name="title">
                   <string>Claude2</string>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_65">
+                 <layout class="QGridLayout" name="gridLayout_65" columnstretch="9,1">
                   <item row="0" column="0">
                    <layout class="QGridLayout" name="gridLayout_60">
                     <item row="0" column="1">
@@ -346,201 +461,47 @@ background-color: rgba(255, 255, 255, 50);
                     </item>
                    </layout>
                   </item>
-                 </layout>
-                </widget>
-               </item>
-               <item row="10" column="1">
-                <widget class="QComboBox" name="comboBox_audio_synthesis_type">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                </widget>
-               </item>
-               <item row="26" column="0" rowspan="2" colspan="3">
-                <widget class="QGroupBox" name="groupBox_chatgpt">
-                 <property name="title">
-                  <string>chatgpt</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_5">
-                  <item row="0" column="0">
-                   <layout class="QGridLayout" name="gridLayout_3">
-                    <item row="2" column="1">
-                     <widget class="QLineEdit" name="lineEdit_chatgpt_max_tokens"/>
-                    </item>
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="label_chatgpt_model">
-                      <property name="text">
-                       <string>模型</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_chatgpt_max_tokens">
-                      <property name="text">
-                       <string>最大令牌数</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="1">
-                     <widget class="QLineEdit" name="lineEdit_chatgpt_presence_penalty"/>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_chatgpt_temperature">
-                      <property name="text">
-                       <string>温度</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="0">
-                     <widget class="QLabel" name="label_chatgpt_top_p">
-                      <property name="text">
-                       <string>前p个选择</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="1">
-                     <widget class="QLineEdit" name="lineEdit_chatgpt_top_p"/>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QLineEdit" name="lineEdit_chatgpt_temperature"/>
-                    </item>
-                    <item row="5" column="0">
-                     <widget class="QLabel" name="label_chatgpt_frequency_penalty">
-                      <property name="text">
-                       <string>频率惩罚</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="5" column="1">
-                     <widget class="QLineEdit" name="lineEdit_chatgpt_frequency_penalty"/>
-                    </item>
-                    <item row="4" column="0">
-                     <widget class="QLabel" name="label_chatgpt_presence_penalty">
-                      <property name="text">
-                       <string>存在惩罚</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="6" column="0">
-                     <widget class="QLabel" name="label_chatgpt_preset">
-                      <property name="text">
-                       <string>预设</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="6" column="1">
-                     <widget class="QLineEdit" name="lineEdit_chatgpt_preset"/>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QComboBox" name="comboBox_chatgpt_model">
-                      <item>
-                       <property name="text">
-                        <string>gpt-3.5-turbo</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-3.5-turbo-0301</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-3.5-turbo-0613</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-3.5-turbo-16k</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-3.5-turbo-16k-0613</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-4</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-4-0314</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-4-0613</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-4-32k</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-4-32k-0314</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>gpt-4-32k-0613</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>text-embedding-ada-002</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>text-davinci-003</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>text-davinci-002</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>text-curie-001</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>text-babbage-001</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>text-ada-001</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>text-moderation-latest</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>text-moderation-stable</string>
-                       </property>
-                      </item>
-                     </widget>
-                    </item>
-                   </layout>
+                  <item row="0" column="1">
+                   <spacer name="horizontalSpacer_12">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
                   </item>
                  </layout>
                 </widget>
                </item>
-               <item row="30" column="0" colspan="3">
+               <item row="19" column="0" colspan="2">
+                <widget class="QGroupBox" name="groupBox_xuniren">
+                 <property name="title">
+                  <string>xuniren</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_89">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_xuniren"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_after_prompt">
+                 <property name="text">
+                  <string>提示词后缀</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="36" column="0" colspan="3">
                 <widget class="QGroupBox" name="groupBox_chatglm">
                  <property name="title">
                   <string>ChatGLM</string>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_9">
+                 <layout class="QGridLayout" name="gridLayout_9" columnstretch="9,1">
                   <item row="0" column="0">
                    <layout class="QGridLayout" name="gridLayout_8">
                     <item row="0" column="0">
@@ -609,14 +570,20 @@ background-color: rgba(255, 255, 255, 50);
                     </item>
                    </layout>
                   </item>
+                  <item row="0" column="1">
+                   <spacer name="horizontalSpacer_13">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
                  </layout>
-                </widget>
-               </item>
-               <item row="5" column="0">
-                <widget class="QLabel" name="label_after_prompt">
-                 <property name="text">
-                  <string>提示词后缀</string>
-                 </property>
                 </widget>
                </item>
                <item row="1" column="0">
@@ -626,12 +593,12 @@ background-color: rgba(255, 255, 255, 50);
                  </property>
                 </widget>
                </item>
-               <item row="24" column="0" colspan="3">
+               <item row="30" column="0" colspan="3">
                 <widget class="QGroupBox" name="groupBox_openai">
                  <property name="title">
                   <string>openai</string>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_4">
+                 <layout class="QGridLayout" name="gridLayout_4" columnstretch="9,1">
                   <item row="0" column="0">
                    <layout class="QGridLayout" name="gridLayout_2">
                     <property name="spacing">
@@ -659,210 +626,52 @@ background-color: rgba(255, 255, 255, 50);
                     </item>
                    </layout>
                   </item>
+                  <item row="0" column="1">
+                   <spacer name="horizontalSpacer_9">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
                  </layout>
                 </widget>
                </item>
-               <item row="4" column="1">
+               <item row="5" column="1">
                 <widget class="QLineEdit" name="lineEdit_before_prompt"/>
                </item>
-               <item row="16" column="0" colspan="3">
-                <widget class="QGroupBox" name="groupBox_log">
-                 <property name="title">
-                  <string>日志</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_47">
-                  <item row="0" column="0">
-                   <layout class="QGridLayout" name="gridLayout_46" columnstretch="1,5">
-                    <item row="1" column="1">
-                     <widget class="QComboBox" name="comboBox_comment_log_type">
-                      <item>
-                       <property name="text">
-                        <string>问答</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>问题</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>回答</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>不记录</string>
-                       </property>
-                      </item>
-                     </widget>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_comment_log_type">
-                      <property name="text">
-                       <string>弹幕日志类型</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="0">
-                     <widget class="QLabel" name="label_captions_file_path">
-                      <property name="text">
-                       <string>字幕日志路径</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="1">
-                     <widget class="QLineEdit" name="lineEdit_captions_file_path"/>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_captions_enable">
-                      <property name="text">
-                       <string>字幕日志</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QCheckBox" name="checkBox_captions_enable">
-                      <property name="text">
-                       <string>启用</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item row="28" column="0" colspan="3">
-                <widget class="QGroupBox" name="groupBox_claude">
-                 <property name="title">
-                  <string>Claude</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_7">
-                  <item row="0" column="0">
-                   <layout class="QGridLayout" name="gridLayout_6">
-                    <item row="1" column="1">
-                     <widget class="QLineEdit" name="lineEdit_claude_slack_user_token"/>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_claude_slack_user_token">
-                      <property name="text">
-                       <string>slack_user_token</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_claude_bot_user_id">
-                      <property name="text">
-                       <string>bot_user_id</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QLineEdit" name="lineEdit_claude_bot_user_id"/>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QComboBox" name="comboBox_need_lang">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>所有</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>中文</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>英文</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>日文</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QComboBox" name="comboBox_chat_type">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>不启用</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>复读机</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>ChatGPT</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Claude</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>ChatGLM</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>chat_with_file</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Chatterbot</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>text-generation-webui</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>讯飞星火</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Langchain_ChatGLM</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-               <item row="10" column="0">
-                <widget class="QLabel" name="label_audio_synthesis_type">
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_visual_body">
                  <property name="text">
-                  <string>语音合成</string>
+                  <string>虚拟身体</string>
                  </property>
                 </widget>
                </item>
-               <item row="17" column="0" colspan="3">
+               <item row="0" column="1">
+                <widget class="QComboBox" name="comboBox_platform">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_chat_type">
+                 <property name="text">
+                  <string>聊天类型</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="23" column="0" colspan="3">
                 <widget class="QGroupBox" name="groupBox_local_qa">
                  <property name="title">
                   <string>本地问答</string>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_51">
+                 <layout class="QGridLayout" name="gridLayout_51" columnstretch="9,1">
                   <item row="0" column="0">
                    <layout class="QGridLayout" name="gridLayout_50">
                     <item row="4" column="0">
@@ -956,101 +765,190 @@ background-color: rgba(255, 255, 255, 50);
                     </item>
                    </layout>
                   </item>
+                  <item row="0" column="1">
+                   <spacer name="horizontalSpacer_5">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
                  </layout>
                 </widget>
                </item>
-               <item row="20" column="0" colspan="3">
-                <widget class="QGroupBox" name="groupBox_thanks">
+               <item row="34" column="0" colspan="3">
+                <widget class="QGroupBox" name="groupBox_claude">
                  <property name="title">
-                  <string>答谢</string>
+                  <string>Claude</string>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_42">
-                  <item row="4" column="0">
-                   <widget class="QLabel" name="label_thanks_gift_copy">
-                    <property name="text">
-                     <string>礼物文案</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QLineEdit" name="lineEdit_thanks_entrance_copy"/>
-                  </item>
+                 <layout class="QGridLayout" name="gridLayout_7" columnstretch="9,1">
                   <item row="0" column="0">
-                   <widget class="QLabel" name="label_thanks_entrance_enable">
-                    <property name="text">
-                     <string>入场欢迎</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="0">
-                   <widget class="QLabel" name="label_thanks_follow_copy">
-                    <property name="text">
-                     <string>关注文案</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0">
-                   <widget class="QLabel" name="label_thanks_gift_enable">
-                    <property name="text">
-                     <string>礼物答谢</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="label_thanks_entrance_copy">
-                    <property name="text">
-                     <string>入场文案</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="1">
-                   <widget class="QCheckBox" name="checkBox_thanks_gift_enable">
-                    <property name="text">
-                     <string>启用</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="0">
-                   <widget class="QLabel" name="label_thanks_lowest_price">
-                    <property name="text">
-                     <string>最低答谢价格</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="1">
-                   <widget class="QLineEdit" name="lineEdit_thanks_lowest_price"/>
-                  </item>
-                  <item row="4" column="1">
-                   <widget class="QLineEdit" name="lineEdit_thanks_gift_copy"/>
+                   <layout class="QGridLayout" name="gridLayout_6">
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="lineEdit_claude_slack_user_token"/>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_claude_slack_user_token">
+                      <property name="text">
+                       <string>slack_user_token</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_claude_bot_user_id">
+                      <property name="text">
+                       <string>bot_user_id</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="lineEdit_claude_bot_user_id"/>
+                    </item>
+                   </layout>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QCheckBox" name="checkBox_thanks_entrance_enable">
-                    <property name="text">
-                     <string>启用</string>
+                   <spacer name="horizontalSpacer_11">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
                     </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="0">
-                   <widget class="QLabel" name="label_thanks_follow_enable">
-                    <property name="text">
-                     <string>关注答谢</string>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
                     </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="1">
-                   <widget class="QCheckBox" name="checkBox_thanks_follow_enable">
-                    <property name="text">
-                     <string>启用</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="1">
-                   <widget class="QLineEdit" name="lineEdit_thanks_follow_copy"/>
+                   </spacer>
                   </item>
                  </layout>
                 </widget>
                </item>
-               <item row="18" column="0" colspan="3">
+               <item row="4" column="1">
+                <widget class="QComboBox" name="comboBox_need_lang">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>所有</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>中文</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>英文</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>日文</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="22" column="0" colspan="3">
+                <widget class="QGroupBox" name="groupBox_log">
+                 <property name="title">
+                  <string>日志</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_47" columnstretch="9,1">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_46" columnstretch="1,5">
+                    <item row="1" column="1">
+                     <widget class="QComboBox" name="comboBox_comment_log_type">
+                      <item>
+                       <property name="text">
+                        <string>问答</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>问题</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>回答</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>不记录</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_comment_log_type">
+                      <property name="text">
+                       <string>弹幕日志类型</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="label_captions_file_path">
+                      <property name="text">
+                       <string>字幕日志路径</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QLineEdit" name="lineEdit_captions_file_path"/>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_captions_enable">
+                      <property name="text">
+                       <string>字幕日志</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QCheckBox" name="checkBox_captions_enable">
+                      <property name="text">
+                       <string>启用</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="0" column="1">
+                   <spacer name="horizontalSpacer_4">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="24" column="0" colspan="3">
                 <widget class="QGroupBox" name="groupBox_filter">
                  <property name="styleSheet">
                   <string notr="true"/>
@@ -1058,7 +956,7 @@ background-color: rgba(255, 255, 255, 50);
                  <property name="title">
                   <string>过滤</string>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_26">
+                 <layout class="QGridLayout" name="gridLayout_26" columnstretch="9,1">
                   <item row="0" column="0">
                    <layout class="QGridLayout" name="gridLayout_filter">
                     <item row="15" column="0">
@@ -1243,113 +1141,105 @@ background-color: rgba(255, 255, 255, 50);
                     </item>
                    </layout>
                   </item>
+                  <item row="0" column="1">
+                   <spacer name="horizontalSpacer_6">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
                  </layout>
+                </widget>
+               </item>
+               <item row="13" column="0" colspan="2">
+                <widget class="QGroupBox" name="groupBox_twitch">
+                 <property name="title">
+                  <string>twitch</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_91">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_twitch"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="11" column="0">
+                <widget class="QLabel" name="label_audio_synthesis_type">
+                 <property name="text">
+                  <string>语音合成</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1">
+                <widget class="QLineEdit" name="lineEdit_after_prompt"/>
+               </item>
+               <item row="2" column="1">
+                <widget class="QComboBox" name="comboBox_chat_type">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>不启用</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>复读机</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>ChatGPT</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Claude</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>ChatGLM</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>chat_with_file</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Chatterbot</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>text-generation-webui</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>讯飞星火</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Langchain_ChatGLM</string>
+                  </property>
+                 </item>
                 </widget>
                </item>
                <item row="1" column="1">
                 <widget class="QLineEdit" name="lineEdit_room_display_id"/>
                </item>
-               <item row="23" column="0" colspan="3">
-                <widget class="QGroupBox" name="groupBox_audio_random_speed">
-                 <property name="title">
-                  <string>音频随机变速</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_53">
-                  <item row="0" column="0">
-                   <layout class="QGridLayout" name="gridLayout_52" columnstretch="1,2,1,2">
-                    <item row="2" column="1">
-                     <widget class="QLineEdit" name="lineEdit_audio_random_speed_normal_speed_min"/>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_audio_random_speed_normal_enable">
-                      <property name="text">
-                       <string>普通音频变速</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_audio_random_speed_normal_speed_min">
-                      <property name="text">
-                       <string>速度下限</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="2">
-                     <widget class="QLabel" name="label_audio_random_speed_normal_speed_max">
-                      <property name="text">
-                       <string>速度上限</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QCheckBox" name="checkBox_audio_random_speed_normal_enable">
-                      <property name="text">
-                       <string>启用</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="3">
-                     <widget class="QLineEdit" name="lineEdit_audio_random_speed_normal_speed_max"/>
-                    </item>
-                    <item row="3" column="0">
-                     <widget class="QLabel" name="label_audio_random_speed_copywriting_enable">
-                      <property name="text">
-                       <string>文案音频变速</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="1">
-                     <widget class="QCheckBox" name="checkBox_audio_random_speed_copywriting_enable">
-                      <property name="text">
-                       <string>启用</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="0">
-                     <widget class="QLabel" name="label_audio_random_speed_copywriting_speed_min">
-                      <property name="text">
-                       <string>速度下限</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="1">
-                     <widget class="QLineEdit" name="lineEdit_audio_random_speed_copywriting_speed_min"/>
-                    </item>
-                    <item row="4" column="2">
-                     <widget class="QLabel" name="label_audio_random_speed_copywriting_speed_max">
-                      <property name="text">
-                       <string>速度上限</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="3">
-                     <widget class="QLineEdit" name="lineEdit_audio_random_speed_copywriting_speed_max"/>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_before_prompt">
-                 <property name="text">
-                  <string>提示词前缀</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="13" column="0" colspan="2">
-                <widget class="QGroupBox" name="groupBox_play_audio">
-                 <property name="title">
-                  <string>音频播放</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_68">
-                  <item row="0" column="0">
-                   <layout class="QGridLayout" name="gridLayout_play_audio"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item row="11" column="0" colspan="2">
+               <item row="12" column="0" colspan="2">
                 <widget class="QGroupBox" name="groupBox_bilibili">
                  <property name="title">
                   <string>哔哩哔哩</string>
@@ -1361,14 +1251,313 @@ background-color: rgba(255, 255, 255, 50);
                  </layout>
                 </widget>
                </item>
-               <item row="14" column="0" colspan="2">
-                <widget class="QGroupBox" name="groupBox_read_comment">
+               <item row="3" column="1">
+                <widget class="QComboBox" name="comboBox_visual_body"/>
+               </item>
+               <item row="26" column="0" colspan="3">
+                <widget class="QGroupBox" name="groupBox_thanks">
                  <property name="title">
-                  <string>念弹幕</string>
+                  <string>答谢</string>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_75">
+                 <layout class="QGridLayout" name="gridLayout_42" columnstretch="1,8,1">
+                  <item row="6" column="0">
+                   <widget class="QLabel" name="label_thanks_follow_enable">
+                    <property name="text">
+                     <string>关注答谢</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="0" column="0">
-                   <layout class="QGridLayout" name="gridLayout_read_comment"/>
+                   <widget class="QLabel" name="label_thanks_entrance_enable">
+                    <property name="text">
+                     <string>入场欢迎</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_thanks_entrance_copy">
+                    <property name="text">
+                     <string>入场文案</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="QLineEdit" name="lineEdit_thanks_lowest_price"/>
+                  </item>
+                  <item row="7" column="0">
+                   <widget class="QLabel" name="label_thanks_follow_copy">
+                    <property name="text">
+                     <string>关注文案</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="label_thanks_gift_copy">
+                    <property name="text">
+                     <string>礼物文案</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="label_thanks_gift_enable">
+                    <property name="text">
+                     <string>礼物答谢</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="1">
+                   <widget class="QLineEdit" name="lineEdit_thanks_follow_copy"/>
+                  </item>
+                  <item row="2" column="2">
+                   <spacer name="horizontalSpacer_7">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QCheckBox" name="checkBox_thanks_gift_enable">
+                    <property name="text">
+                     <string>启用</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="lineEdit_thanks_entrance_copy"/>
+                  </item>
+                  <item row="5" column="0">
+                   <widget class="QLabel" name="label_thanks_lowest_price">
+                    <property name="text">
+                     <string>最低答谢价格</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="QLineEdit" name="lineEdit_thanks_gift_copy"/>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QCheckBox" name="checkBox_thanks_entrance_enable">
+                    <property name="text">
+                     <string>启用</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="1">
+                   <widget class="QCheckBox" name="checkBox_thanks_follow_enable">
+                    <property name="text">
+                     <string>启用</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="32" column="0" rowspan="2" colspan="3">
+                <widget class="QGroupBox" name="groupBox_chatgpt">
+                 <property name="title">
+                  <string>chatgpt</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_5" columnstretch="9,1">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_3">
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="lineEdit_chatgpt_max_tokens"/>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_chatgpt_model">
+                      <property name="text">
+                       <string>模型</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_chatgpt_max_tokens">
+                      <property name="text">
+                       <string>最大令牌数</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="1">
+                     <widget class="QLineEdit" name="lineEdit_chatgpt_presence_penalty"/>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_chatgpt_temperature">
+                      <property name="text">
+                       <string>温度</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="label_chatgpt_top_p">
+                      <property name="text">
+                       <string>前p个选择</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QLineEdit" name="lineEdit_chatgpt_top_p"/>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="lineEdit_chatgpt_temperature"/>
+                    </item>
+                    <item row="5" column="0">
+                     <widget class="QLabel" name="label_chatgpt_frequency_penalty">
+                      <property name="text">
+                       <string>频率惩罚</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="1">
+                     <widget class="QLineEdit" name="lineEdit_chatgpt_frequency_penalty"/>
+                    </item>
+                    <item row="4" column="0">
+                     <widget class="QLabel" name="label_chatgpt_presence_penalty">
+                      <property name="text">
+                       <string>存在惩罚</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="6" column="0">
+                     <widget class="QLabel" name="label_chatgpt_preset">
+                      <property name="text">
+                       <string>预设</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="6" column="1">
+                     <widget class="QLineEdit" name="lineEdit_chatgpt_preset"/>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QComboBox" name="comboBox_chatgpt_model">
+                      <item>
+                       <property name="text">
+                        <string>gpt-3.5-turbo</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-3.5-turbo-0301</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-3.5-turbo-0613</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-3.5-turbo-16k</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-3.5-turbo-16k-0613</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-4</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-4-0314</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-4-0613</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-4-32k</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-4-32k-0314</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>gpt-4-32k-0613</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>text-embedding-ada-002</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>text-davinci-003</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>text-davinci-002</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>text-curie-001</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>text-babbage-001</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>text-ada-001</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>text-moderation-latest</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>text-moderation-stable</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="0" column="1">
+                   <spacer name="horizontalSpacer_10">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="18" column="0" colspan="2">
+                <widget class="QGroupBox" name="groupBox_audio_player">
+                 <property name="title">
+                  <string>audio_player</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_92">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_audio_player"/>
                   </item>
                  </layout>
                 </widget>
@@ -1381,9 +1570,22 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>智谱AI</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_71">
+              <layout class="QGridLayout" name="gridLayout_71" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_zhipu"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_14">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -1393,7 +1595,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>Langchain_ChatGLM</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_64">
+              <layout class="QGridLayout" name="gridLayout_64" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_langchain_chatglm">
                  <item row="0" column="0">
@@ -1452,6 +1654,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_15">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -1460,19 +1675,16 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>chat_with_file</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_10">
+              <layout class="QGridLayout" name="gridLayout_10" columnstretch="9,1">
                <item row="0" column="0">
-                <layout class="QGridLayout" name="gridLayout_11" rowstretch="0,0,0,0,0,0,0,0,0,0,0" rowminimumheight="0,0,0,0,0,0,0,0,0,0,0">
+                <layout class="QGridLayout" name="gridLayout_11" rowstretch="0,0,0,0,0,0,0,0,0,0,0" columnstretch="1,0">
                  <property name="spacing">
                   <number>6</number>
                  </property>
-                 <item row="5" column="1">
-                  <widget class="QLineEdit" name="lineEdit_chat_with_file_chunk_overlap"/>
-                 </item>
-                 <item row="7" column="0">
-                  <widget class="QLabel" name="label_chat_with_file_chain_type">
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="label_chat_with_file_local_vector_embedding_model">
                    <property name="text">
-                    <string>链类型</string>
+                    <string>模型</string>
                    </property>
                   </widget>
                  </item>
@@ -1483,70 +1695,10 @@ background-color: rgba(255, 255, 255, 50);
                    </property>
                   </widget>
                  </item>
-                 <item row="7" column="1">
-                  <widget class="QLineEdit" name="lineEdit_chat_with_file_chain_type"/>
-                 </item>
-                 <item row="6" column="0">
-                  <widget class="QLabel" name="label_chat_with_file_local_vector_embedding_model">
-                   <property name="text">
-                    <string>模型</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="1">
-                  <widget class="QLineEdit" name="lineEdit_chat_with_file_chunk_size"/>
-                 </item>
                  <item row="10" column="0">
                   <widget class="QLabel" name="label_chat_with_file_show_token_cost">
                    <property name="text">
                     <string>显示成本</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="10" column="1">
-                  <widget class="QCheckBox" name="checkBox_chat_with_file_show_token_cost">
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="text">
-                    <string>启用</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QLineEdit" name="lineEdit_chat_with_file_data_path"/>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="label_chat_with_file_chunk_size">
-                   <property name="text">
-                    <string>块大小</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="0">
-                  <widget class="QLabel" name="label_chat_with_file_chunk_overlap">
-                   <property name="text">
-                    <string>块重叠</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="8" column="0">
-                  <widget class="QLabel" name="label_chat_with_file_question_prompt">
-                   <property name="text">
-                    <string>问题总结提示词</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QLineEdit" name="lineEdit_chat_with_file_separator"/>
-                 </item>
-                 <item row="8" column="1">
-                  <widget class="QLineEdit" name="lineEdit_chat_with_file_question_prompt"/>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_chat_with_file_separator">
-                   <property name="text">
-                    <string>分隔符</string>
                    </property>
                   </widget>
                  </item>
@@ -1564,8 +1716,45 @@ background-color: rgba(255, 255, 255, 50);
                    </property>
                   </widget>
                  </item>
-                 <item row="9" column="1">
-                  <widget class="QLineEdit" name="lineEdit_chat_with_file_local_max_query"/>
+                 <item row="8" column="0">
+                  <widget class="QLabel" name="label_chat_with_file_question_prompt">
+                   <property name="text">
+                    <string>问题总结提示词</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="lineEdit_chat_with_file_separator"/>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="label_chat_with_file_chunk_size">
+                   <property name="text">
+                    <string>块大小</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QLineEdit" name="lineEdit_chat_with_file_chunk_overlap"/>
+                 </item>
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="label_chat_with_file_chain_type">
+                   <property name="text">
+                    <string>链类型</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="10" column="1">
+                  <widget class="QCheckBox" name="checkBox_chat_with_file_show_token_cost">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>启用</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="lineEdit_chat_with_file_data_path"/>
                  </item>
                  <item row="0" column="1">
                   <widget class="QComboBox" name="comboBox_chat_with_file_chat_mode">
@@ -1586,6 +1775,26 @@ background-color: rgba(255, 255, 255, 50);
                    </item>
                   </widget>
                  </item>
+                 <item row="8" column="1">
+                  <widget class="QLineEdit" name="lineEdit_chat_with_file_question_prompt"/>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_chat_with_file_separator">
+                   <property name="text">
+                    <string>分隔符</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
+                  <widget class="QLineEdit" name="lineEdit_chat_with_file_chain_type"/>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="label_chat_with_file_chunk_overlap">
+                   <property name="text">
+                    <string>块重叠</string>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="6" column="1">
                   <widget class="QComboBox" name="comboBox_chat_with_file_local_vector_embedding_model">
                    <item>
@@ -1600,7 +1809,26 @@ background-color: rgba(255, 255, 255, 50);
                    </item>
                   </widget>
                  </item>
+                 <item row="9" column="1">
+                  <widget class="QLineEdit" name="lineEdit_chat_with_file_local_max_query"/>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLineEdit" name="lineEdit_chat_with_file_chunk_size"/>
+                 </item>
                 </layout>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_16">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -1610,7 +1838,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>text-generation-webui</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_28">
+              <layout class="QGridLayout" name="gridLayout_28" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_27">
                  <item row="1" column="1">
@@ -1675,6 +1903,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_17">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -1683,16 +1924,23 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>讯飞星火</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_55">
+              <layout class="QGridLayout" name="gridLayout_55" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_54">
-                 <item row="0" column="1">
-                  <widget class="QComboBox" name="comboBox_sparkdesk_type"/>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="label_sparkdesk_GtToken">
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="label_sparkdesk_api_key">
                    <property name="text">
-                    <string>GtToken</string>
+                    <string>api_key</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="lineEdit_sparkdesk_app_id"/>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="label_sparkdesk_api_secret">
+                   <property name="text">
+                    <string>api_secret</string>
                    </property>
                   </widget>
                  </item>
@@ -1702,34 +1950,13 @@ background-color: rgba(255, 255, 255, 50);
                  <item row="1" column="1">
                   <widget class="QLineEdit" name="lineEdit_sparkdesk_cookie"/>
                  </item>
-                 <item row="4" column="0">
-                  <widget class="QLabel" name="label_sparkdesk_app_id">
-                   <property name="text">
-                    <string>app_id</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="0">
-                  <widget class="QLabel" name="label_sparkdesk_api_secret">
-                   <property name="text">
-                    <string>api_secret</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="1">
-                  <widget class="QLineEdit" name="lineEdit_sparkdesk_api_secret"/>
+                 <item row="0" column="1">
+                  <widget class="QComboBox" name="comboBox_sparkdesk_type"/>
                  </item>
                  <item row="1" column="0">
                   <widget class="QLabel" name="label_sparkdesk_cookie">
                    <property name="text">
                     <string>cookie</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_sparkdesk_fd">
-                   <property name="text">
-                    <string>fd</string>
                    </property>
                   </widget>
                  </item>
@@ -1740,23 +1967,60 @@ background-color: rgba(255, 255, 255, 50);
                    </property>
                   </widget>
                  </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="label_sparkdesk_app_id">
+                   <property name="text">
+                    <string>app_id</string>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="2" column="1">
                   <widget class="QLineEdit" name="lineEdit_sparkdesk_fd"/>
                  </item>
-                 <item row="4" column="1">
-                  <widget class="QLineEdit" name="lineEdit_sparkdesk_app_id"/>
+                 <item row="5" column="1">
+                  <widget class="QLineEdit" name="lineEdit_sparkdesk_api_secret"/>
                  </item>
-                 <item row="6" column="0">
-                  <widget class="QLabel" name="label_sparkdesk_api_key">
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_sparkdesk_fd">
                    <property name="text">
-                    <string>api_key</string>
+                    <string>fd</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="label_sparkdesk_GtToken">
+                   <property name="text">
+                    <string>GtToken</string>
                    </property>
                   </widget>
                  </item>
                  <item row="6" column="1">
                   <widget class="QLineEdit" name="lineEdit_sparkdesk_api_key"/>
                  </item>
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="label_sparkdesk_version">
+                   <property name="text">
+                    <string>版本</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
+                  <widget class="QComboBox" name="comboBox_sparkdesk_version"/>
+                 </item>
                 </layout>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_18">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -1766,9 +2030,72 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>Bard</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_74">
+              <layout class="QGridLayout" name="gridLayout_74" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_bard"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_19">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_yiyan">
+              <property name="title">
+               <string>文心一言</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_76" columnstretch="9,1">
+               <item row="0" column="0">
+                <layout class="QGridLayout" name="gridLayout_yiyan"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_20">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_tongyi">
+              <property name="title">
+               <string>通义千问</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_88" columnstretch="9,1">
+               <item row="0" column="0">
+                <layout class="QGridLayout" name="gridLayout_tongyi"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_41">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -1778,7 +2105,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>Chatterbot</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_12">
+              <layout class="QGridLayout" name="gridLayout_12" columnstretch="9,0">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_13">
                  <item row="1" column="1">
@@ -1803,6 +2130,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_21">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -1811,7 +2151,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>Edge-TTS</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_14">
+              <layout class="QGridLayout" name="gridLayout_14" columnstretch="0,9,1">
                <item row="0" column="1">
                 <layout class="QGridLayout" name="gridLayout_15">
                  <item row="1" column="1">
@@ -1853,6 +2193,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="2">
+                <spacer name="horizontalSpacer_22">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -1861,9 +2214,22 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>VITS</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_63">
+              <layout class="QGridLayout" name="gridLayout_63" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_vits"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_23">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -1873,7 +2239,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>VITS-Fast</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_23">
+              <layout class="QGridLayout" name="gridLayout_23" columnstretch="0,9,1">
                <item row="0" column="1">
                 <layout class="QGridLayout" name="gridLayout_24">
                  <item row="0" column="0">
@@ -1883,8 +2249,15 @@ background-color: rgba(255, 255, 255, 50);
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="2">
-                  <widget class="QLineEdit" name="lineEdit_vits_fast_character"/>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="label_vits_fast_speed">
+                   <property name="text">
+                    <string>语速</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QLineEdit" name="lineEdit_vits_fast_api_ip_port"/>
                  </item>
                  <item row="2" column="0">
                   <widget class="QLabel" name="label_vits_fast_character">
@@ -1893,11 +2266,11 @@ background-color: rgba(255, 255, 255, 50);
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="2">
-                  <widget class="QLineEdit" name="lineEdit_vits_fast_api_ip_port"/>
-                 </item>
                  <item row="0" column="2">
                   <widget class="QLineEdit" name="lineEdit_vits_fast_config_path"/>
+                 </item>
+                 <item row="4" column="2">
+                  <widget class="QLineEdit" name="lineEdit_vits_fast_speed"/>
                  </item>
                  <item row="1" column="0">
                   <widget class="QLabel" name="label_vits_fast_api_ip_port">
@@ -1907,16 +2280,58 @@ background-color: rgba(255, 255, 255, 50);
                   </widget>
                  </item>
                  <item row="3" column="0">
-                  <widget class="QLabel" name="label_vits_fast_speed">
+                  <widget class="QLabel" name="label_vits_fast_language">
                    <property name="text">
-                    <string>语速</string>
+                    <string>语言</string>
                    </property>
                   </widget>
                  </item>
+                 <item row="2" column="2">
+                  <widget class="QLineEdit" name="lineEdit_vits_fast_character"/>
+                 </item>
                  <item row="3" column="2">
-                  <widget class="QLineEdit" name="lineEdit_vits_fast_speed"/>
+                  <widget class="QComboBox" name="comboBox_vits_fast_language">
+                   <item>
+                    <property name="text">
+                     <string>自动识别</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>日本語</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>简体中文</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>English</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Mix</string>
+                    </property>
+                   </item>
+                  </widget>
                  </item>
                 </layout>
+               </item>
+               <item row="0" column="2">
+                <spacer name="horizontalSpacer_24">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -1926,19 +2341,9 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>genshinvoice_top</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_44">
+              <layout class="QGridLayout" name="gridLayout_44" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_43">
-                 <item row="1" column="1">
-                  <widget class="QLineEdit" name="lineEdit_genshinvoice_top_noise"/>
-                 </item>
-                 <item row="4" column="0">
-                  <widget class="QLabel" name="label_genshinvoice_top_format">
-                   <property name="text">
-                    <string>格式</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item row="0" column="0">
                   <widget class="QLabel" name="label_genshinvoice_top_speaker">
                    <property name="text">
@@ -1953,15 +2358,15 @@ background-color: rgba(255, 255, 255, 50);
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_genshinvoice_top_noise">
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="label_genshinvoice_top_format">
                    <property name="text">
-                    <string>感情</string>
+                    <string>格式</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="1">
-                  <widget class="QComboBox" name="comboBox_genshinvoice_top_speaker"/>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="lineEdit_genshinvoice_top_noisew"/>
                  </item>
                  <item row="3" column="0">
                   <widget class="QLabel" name="label_genshinvoice_top_length">
@@ -1970,16 +2375,49 @@ background-color: rgba(255, 255, 255, 50);
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="1">
-                  <widget class="QLineEdit" name="lineEdit_genshinvoice_top_noisew"/>
-                 </item>
                  <item row="3" column="1">
                   <widget class="QLineEdit" name="lineEdit_genshinvoice_top_length"/>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QComboBox" name="comboBox_genshinvoice_top_speaker"/>
                  </item>
                  <item row="4" column="1">
                   <widget class="QLineEdit" name="lineEdit_genshinvoice_top_format"/>
                  </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="lineEdit_genshinvoice_top_noise"/>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_genshinvoice_top_noise">
+                   <property name="text">
+                    <string>感情</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="label_genshinvoice_top_language">
+                   <property name="text">
+                    <string>语言</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QComboBox" name="comboBox_genshinvoice_top_language"/>
+                 </item>
                 </layout>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_25">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -1989,7 +2427,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>elevenlabs</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_16">
+              <layout class="QGridLayout" name="gridLayout_16" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_17">
                  <item row="0" column="1">
@@ -2024,6 +2462,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_26">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2032,7 +2483,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>bark-gui</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_57">
+              <layout class="QGridLayout" name="gridLayout_57" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_56">
                  <item row="0" column="0">
@@ -2121,6 +2572,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_27">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2129,9 +2593,47 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>VALL-E-X</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_70">
+              <layout class="QGridLayout" name="gridLayout_70" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_vall_e_x"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_28">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_openai_tts">
+              <property name="title">
+               <string>OpenAI TTS</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_95" columnstretch="9,1">
+               <item row="0" column="0">
+                <layout class="QGridLayout" name="gridLayout_openai_tts"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_44">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -2141,7 +2643,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>Live2D</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_30">
+              <layout class="QGridLayout" name="gridLayout_30" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_29" columnstretch="1,8">
                  <item row="0" column="1">
@@ -2180,6 +2682,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_29">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2188,7 +2703,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>点歌模式</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_34">
+              <layout class="QGridLayout" name="gridLayout_34" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_33">
                  <item row="2" column="0">
@@ -2257,6 +2772,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_30">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2265,9 +2793,71 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>定时任务</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_61">
+              <layout class="QGridLayout" name="gridLayout_61" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_schedule"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_31">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_idle_time_task">
+              <property name="title">
+               <string>闲时任务</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_87" columnstretch="9,1">
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_43">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="0" column="0">
+                <layout class="QGridLayout" name="gridLayout_idle_time_task"/>
+               </item>
+               <item row="1" column="0">
+                <widget class="QGroupBox" name="groupBox_idle_time_task_comment">
+                 <property name="title">
+                  <string>LLM模式</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_94">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_idle_time_task_comment"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QGroupBox" name="groupBox_idle_time_task_local_audio">
+                 <property name="title">
+                  <string>本地音频模式</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_96">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_idle_time_task_local_audio"/>
+                  </item>
+                 </layout>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -2277,7 +2867,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>DDSP_SVC</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_49">
+              <layout class="QGridLayout" name="gridLayout_49" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_48">
                  <item row="0" column="0">
@@ -2356,6 +2946,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_32">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2364,7 +2967,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>so-vits-svc</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_36">
+              <layout class="QGridLayout" name="gridLayout_36" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_35">
                  <item row="0" column="1">
@@ -2433,6 +3036,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_33">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2441,7 +3057,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>Stable Diffusion</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_32">
+              <layout class="QGridLayout" name="gridLayout_32" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_31">
                  <item row="16" column="1">
@@ -2634,6 +3250,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_34">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2642,7 +3271,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>动态文案</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_66">
+              <layout class="QGridLayout" name="gridLayout_66" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_trends_copywriting">
                  <item row="2" column="0">
@@ -2688,6 +3317,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_35">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2696,7 +3338,7 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>请求头</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_18">
+              <layout class="QGridLayout" name="gridLayout_18" columnstretch="0,9,1">
                <item row="0" column="1">
                 <layout class="QGridLayout" name="gridLayout_19">
                  <item row="0" column="0">
@@ -2715,6 +3357,19 @@ background-color: rgba(255, 255, 255, 50);
                  </item>
                 </layout>
                </item>
+               <item row="0" column="2">
+                <spacer name="horizontalSpacer_36">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2723,9 +3378,22 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>web字幕打印机</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_69">
+              <layout class="QGridLayout" name="gridLayout_69" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_web_captions_printer"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_37">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -2735,9 +3403,110 @@ background-color: rgba(255, 255, 255, 50);
               <property name="title">
                <string>数据库</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_67">
+              <layout class="QGridLayout" name="gridLayout_67" columnstretch="9,1">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_database"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_38">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_key_mapping">
+              <property name="title">
+               <string>按键映射</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_90" columnstretch="9,1">
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_42">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="0" column="0">
+                <layout class="QGridLayout" name="gridLayout_key_mapping">
+                 <item row="0" column="1">
+                  <widget class="QCheckBox" name="checkBox_key_mapping_enable">
+                   <property name="text">
+                    <string>是</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_key_mapping_enable">
+                   <property name="text">
+                    <string>启用</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="lineEdit_key_mapping_start_cmd"/>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_key_mapping_start_cmd">
+                   <property name="text">
+                    <string>命令前缀</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_key_mapping_type">
+                   <property name="text">
+                    <string>类型</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QComboBox" name="comboBox_key_mapping_type"/>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="0">
+                <layout class="QGridLayout" name="gridLayout_key_mapping_config"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_unity">
+              <property name="title">
+               <string>Unity</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_97" columnstretch="9,1">
+               <item row="0" column="0">
+                <layout class="QGridLayout" name="gridLayout_unity"/>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_45">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -2784,7 +3553,7 @@ p, li { white-space: pre-wrap; }
              <x>0</x>
              <y>0</y>
              <width>698</width>
-             <height>1115</height>
+             <height>1156</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -2798,178 +3567,6 @@ p, li { white-space: pre-wrap; }
               </property>
               <layout class="QGridLayout" name="gridLayout_37" columnstretch="1,3,1,1,1,1">
                <item row="6" column="0">
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="5" column="1" colspan="5">
-                <widget class="QTextEdit" name="textEdit_copywriting_edit">
-                 <property name="styleSheet">
-                  <string notr="true">min-height:300px;</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="4">
-                <widget class="QPushButton" name="pushButton_copywriting_select">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">text-align: center;
-padding: 12px 16px;
-font: 80 10pt &quot;微软雅黑&quot;;
-border:2px solid #ffffff;
-border-radius: 3px;</string>
-                 </property>
-                 <property name="text">
-                  <string>加载</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_copywriting_select">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>选择文案</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1" colspan="5">
-                <widget class="QLineEdit" name="lineEdit_copywriting_switching_interval">
-                 <property name="styleSheet">
-                  <string notr="true">min-height:40px;</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="3">
-                <widget class="QPushButton" name="pushButton_copywriting_synthetic_audio">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">text-align: center;
-padding: 12px 16px;
-font: 80 10pt &quot;微软雅黑&quot;;
-border:2px solid #ffffff;
-border-radius: 3px;</string>
-                 </property>
-                 <property name="text">
-                  <string>合成音频</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="5">
-                <widget class="QPushButton" name="pushButton_copywriting_pause_play">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">text-align: center;
-padding: 12px 16px;
-font: 80 10pt &quot;微软雅黑&quot;;
-border:2px solid #ffffff;
-border-radius: 3px;</string>
-                 </property>
-                 <property name="text">
-                  <string>暂停播放</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="1">
-                <spacer name="horizontalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_copywriting_audio_interval">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>音频播放间隔</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_copywriting_switching_interval">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>音频切换间隔</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1" colspan="5">
-                <widget class="QLineEdit" name="lineEdit_copywriting_audio_interval">
-                 <property name="styleSheet">
-                  <string notr="true">min-height:40px;</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="5">
-                <widget class="QPushButton" name="pushButton_copywriting_refresh_list">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">text-align: center;
-padding: 12px 16px;
-font: 80 10pt &quot;微软雅黑&quot;;
-border:2px solid #ffffff;
-border-radius: 3px;</string>
-                 </property>
-                 <property name="text">
-                  <string>刷新列表</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="1" colspan="3">
-                <widget class="QLineEdit" name="lineEdit_copywriting_select">
-                 <property name="styleSheet">
-                  <string notr="true">min-height:50px;</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_copywriting_switching_random_play">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>音频随机播放</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QCheckBox" name="checkBox_copywriting_switching_random_play">
-                 <property name="styleSheet">
-                  <string notr="true">min-height:40px;</string>
-                 </property>
-                 <property name="text">
-                  <string>启用</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="0">
                 <widget class="QLabel" name="label_copywriting_edit">
                  <property name="styleSheet">
                   <string notr="true"/>
@@ -2979,7 +3576,7 @@ border-radius: 3px;</string>
                  </property>
                 </widget>
                </item>
-               <item row="6" column="2">
+               <item row="7" column="2">
                 <widget class="QPushButton" name="pushButton_copywriting_save">
                  <property name="cursor">
                   <cursorShape>PointingHandCursor</cursorShape>
@@ -2993,23 +3590,6 @@ border-radius: 3px;</string>
                  </property>
                  <property name="text">
                   <string>保存文案</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="4">
-                <widget class="QPushButton" name="pushButton_copywriting_loop_play">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">text-align: center;
-padding: 12px 16px;
-font: 80 10pt &quot;微软雅黑&quot;;
-border:2px solid #ffffff;
-border-radius: 3px;</string>
-                 </property>
-                 <property name="text">
-                  <string>循环播放</string>
                  </property>
                 </widget>
                </item>
@@ -3101,6 +3681,209 @@ border-radius: 3px;</string>
                  </widget>
                 </widget>
                </item>
+               <item row="7" column="5">
+                <widget class="QPushButton" name="pushButton_copywriting_pause_play">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">text-align: center;
+padding: 12px 16px;
+font: 80 10pt &quot;微软雅黑&quot;;
+border:2px solid #ffffff;
+border-radius: 3px;</string>
+                 </property>
+                 <property name="text">
+                  <string>暂停播放</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="3">
+                <widget class="QPushButton" name="pushButton_copywriting_synthetic_audio">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">text-align: center;
+padding: 12px 16px;
+font: 80 10pt &quot;微软雅黑&quot;;
+border:2px solid #ffffff;
+border-radius: 3px;</string>
+                 </property>
+                 <property name="text">
+                  <string>合成音频</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="4">
+                <widget class="QPushButton" name="pushButton_copywriting_loop_play">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">text-align: center;
+padding: 12px 16px;
+font: 80 10pt &quot;微软雅黑&quot;;
+border:2px solid #ffffff;
+border-radius: 3px;</string>
+                 </property>
+                 <property name="text">
+                  <string>循环播放</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1" colspan="5">
+                <widget class="QLineEdit" name="lineEdit_copywriting_audio_interval">
+                 <property name="styleSheet">
+                  <string notr="true">min-height:40px;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="5">
+                <widget class="QPushButton" name="pushButton_copywriting_refresh_list">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">text-align: center;
+padding: 12px 16px;
+font: 80 10pt &quot;微软雅黑&quot;;
+border:2px solid #ffffff;
+border-radius: 3px;</string>
+                 </property>
+                 <property name="text">
+                  <string>刷新列表</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_copywriting_select">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>选择文案</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_copywriting_switching_random_play">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>音频随机播放</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_copywriting_audio_interval">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>音频播放间隔</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1" colspan="5">
+                <widget class="QLineEdit" name="lineEdit_copywriting_switching_interval">
+                 <property name="styleSheet">
+                  <string notr="true">min-height:40px;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1">
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="5" column="4">
+                <widget class="QPushButton" name="pushButton_copywriting_select">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">text-align: center;
+padding: 12px 16px;
+font: 80 10pt &quot;微软雅黑&quot;;
+border:2px solid #ffffff;
+border-radius: 3px;</string>
+                 </property>
+                 <property name="text">
+                  <string>加载</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1" colspan="5">
+                <widget class="QTextEdit" name="textEdit_copywriting_edit">
+                 <property name="styleSheet">
+                  <string notr="true">min-height:300px;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1" colspan="3">
+                <widget class="QLineEdit" name="lineEdit_copywriting_select">
+                 <property name="styleSheet">
+                  <string notr="true">min-height:50px;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QCheckBox" name="checkBox_copywriting_switching_random_play">
+                 <property name="styleSheet">
+                  <string notr="true">min-height:40px;</string>
+                 </property>
+                 <property name="text">
+                  <string>启用</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_copywriting_switching_interval">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>音频切换间隔</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_copywriting_switching_auto_play">
+                 <property name="text">
+                  <string>自动播放</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QCheckBox" name="checkBox_copywriting_switching_auto_play">
+                 <property name="text">
+                  <string>启用</string>
+                 </property>
+                </widget>
+               </item>
               </layout>
              </widget>
             </item>
@@ -3126,14 +3909,61 @@ border-radius: 3px;</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>426</width>
+             <width>433</width>
              <height>911</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
              <widget class="QWidget" name="widget_2" native="true">
-              <layout class="QGridLayout" name="gridLayout_40" rowstretch="1,1,1,1,1,1,1,1,1,1,5,0" columnstretch="1,8,1,0,0" rowminimumheight="1,1,1,1,1,1,1,1,1,1,1,0">
+              <layout class="QGridLayout" name="gridLayout_40" rowstretch="1,1,1,1,1,1,1,1,1,1,5,0" columnstretch="1,8,1,0,0,0" rowminimumheight="1,1,1,1,1,1,1,1,1,1,1,0">
+               <item row="1" column="1" colspan="4">
+                <widget class="QCheckBox" name="checkBox_talk_continuous_talk">
+                 <property name="text">
+                  <string>启用</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1" colspan="4">
+                <widget class="QLineEdit" name="lineEdit_talk_silence_threshold"/>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_talk_continuous_talk">
+                 <property name="text">
+                  <string>连续对话</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1" colspan="4">
+                <widget class="QLineEdit" name="lineEdit_talk_username"/>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_talk_username">
+                 <property name="text">
+                  <string>你的名字</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1">
+                <widget class="QTextEdit" name="textEdit_talk_chat_box"/>
+               </item>
+               <item row="9" column="3">
+                <widget class="QPushButton" name="pushButton_talk_chat_box_reread">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">text-align: center;
+padding: 12px 16px;
+font: 80 10pt &quot;微软雅黑&quot;;
+border:2px solid #ffffff;
+border-radius: 3px;</string>
+                 </property>
+                 <property name="text">
+                  <string>直接复读</string>
+                 </property>
+                </widget>
+               </item>
                <item row="8" column="0" colspan="5">
                 <widget class="QGroupBox" name="groupBox_talk_google">
                  <property name="title">
@@ -3153,10 +3983,53 @@ border-radius: 3px;</string>
                  </layout>
                 </widget>
                </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_talk_type">
+               <item row="9" column="2">
+                <widget class="QPushButton" name="pushButton_talk_chat_box_send">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">text-align: center;
+padding: 12px 16px;
+font: 80 10pt &quot;微软雅黑&quot;;
+border:2px solid #ffffff;
+border-radius: 3px;</string>
+                 </property>
                  <property name="text">
-                  <string>录音类型</string>
+                  <string>发送</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1" colspan="4">
+                <widget class="QComboBox" name="comboBox_talk_stop_trigger_key"/>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_talk_silence_threshold">
+                 <property name="text">
+                  <string>沉默阈值</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_talk_stop_trigger_key">
+                 <property name="text">
+                  <string>停录按键</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_talk_trigger_key">
+                 <property name="text">
+                  <string>录音按键</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="0" rowspan="2" colspan="5">
+                <widget class="QTextBrowser" name="textBrowser_talk_log">
+                 <property name="styleSheet">
+                  <string notr="true">font: 12pt &quot;仿宋&quot;;
+min-height:200px;
+</string>
                  </property>
                 </widget>
                </item>
@@ -3167,29 +4040,28 @@ border-radius: 3px;</string>
                  </property>
                 </widget>
                </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_talk_username">
-                 <property name="text">
-                  <string>你的名字</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_talk_continuous_talk">
-                 <property name="text">
-                  <string>连续对话</string>
-                 </property>
-                </widget>
-               </item>
                <item row="5" column="1" colspan="4">
                 <widget class="QLineEdit" name="lineEdit_talk_volume_threshold"/>
                </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_talk_trigger_key">
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_talk_type">
                  <property name="text">
-                  <string>录音按键</string>
+                  <string>录音类型</string>
                  </property>
                 </widget>
+               </item>
+               <item row="9" column="0">
+                <widget class="QLabel" name="label_talk_chat_box">
+                 <property name="text">
+                  <string>聊天框</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1" colspan="4">
+                <widget class="QComboBox" name="comboBox_talk_trigger_key"/>
+               </item>
+               <item row="4" column="1" colspan="4">
+                <widget class="QComboBox" name="comboBox_talk_type"/>
                </item>
                <item row="7" column="0" colspan="5">
                 <widget class="QGroupBox" name="groupBox_talk_baidu">
@@ -3230,94 +4102,18 @@ border-radius: 3px;</string>
                  </layout>
                 </widget>
                </item>
-               <item row="4" column="1" colspan="4">
-                <widget class="QComboBox" name="comboBox_talk_type"/>
-               </item>
-               <item row="10" column="0" rowspan="2" colspan="5">
-                <widget class="QTextBrowser" name="textBrowser_talk_log">
-                 <property name="styleSheet">
-                  <string notr="true">font: 12pt &quot;仿宋&quot;;
-min-height:200px;
-</string>
+               <item row="0" column="5">
+                <spacer name="horizontalSpacer_39">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                </widget>
-               </item>
-               <item row="0" column="1" colspan="4">
-                <widget class="QLineEdit" name="lineEdit_talk_username"/>
-               </item>
-               <item row="9" column="1">
-                <widget class="QTextEdit" name="textEdit_talk_chat_box"/>
-               </item>
-               <item row="9" column="0">
-                <widget class="QLabel" name="label_talk_chat_box">
-                 <property name="text">
-                  <string>聊天框</string>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
                  </property>
-                </widget>
-               </item>
-               <item row="1" column="1" colspan="4">
-                <widget class="QCheckBox" name="checkBox_talk_continuous_talk">
-                 <property name="text">
-                  <string>启用</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1" colspan="4">
-                <widget class="QComboBox" name="comboBox_talk_stop_trigger_key"/>
-               </item>
-               <item row="2" column="1" colspan="4">
-                <widget class="QComboBox" name="comboBox_talk_trigger_key"/>
-               </item>
-               <item row="6" column="1" colspan="4">
-                <widget class="QLineEdit" name="lineEdit_talk_silence_threshold"/>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_talk_stop_trigger_key">
-                 <property name="text">
-                  <string>停录按键</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="0">
-                <widget class="QLabel" name="label_talk_silence_threshold">
-                 <property name="text">
-                  <string>沉默阈值</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="3">
-                <widget class="QPushButton" name="pushButton_talk_chat_box_reread">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">text-align: center;
-padding: 12px 16px;
-font: 80 10pt &quot;微软雅黑&quot;;
-border:2px solid #ffffff;
-border-radius: 3px;</string>
-                 </property>
-                 <property name="text">
-                  <string>直接复读</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="2">
-                <widget class="QPushButton" name="pushButton_talk_chat_box_send">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">text-align: center;
-padding: 12px 16px;
-font: 80 10pt &quot;微软雅黑&quot;;
-border:2px solid #ffffff;
-border-radius: 3px;</string>
-                 </property>
-                 <property name="text">
-                  <string>发送</string>
-                 </property>
-                </widget>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -3328,24 +4124,172 @@ border-radius: 3px;</string>
         </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-    <item row="8" column="1">
-     <widget class="QPushButton" name="pushButton_factory">
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border: 1px solid #dcdfe6;
-background-color: #f56c6c;
-text-align: center;
-padding: 12px 16px;
-border-radius: 4px;
-font: 75 12pt &quot;微软雅黑&quot;;</string>
-      </property>
-      <property name="text">
-       <string>恢复出厂配置</string>
-      </property>
+      <widget class="QWidget" name="page_5">
+       <layout class="QGridLayout" name="gridLayout_77">
+        <item row="0" column="0">
+         <widget class="QScrollArea" name="scrollArea_4">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_5">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>181</width>
+             <height>631</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QWidget" name="widget_3" native="true">
+              <layout class="QGridLayout" name="gridLayout_78" columnstretch="12,1">
+               <item row="3" column="0">
+                <widget class="QGroupBox" name="groupBox_integral_entrance">
+                 <property name="title">
+                  <string>入场</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_85">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_integral_entrance"/>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QGroupBox" name="groupBox_integral_entrance_copywriting">
+                    <property name="title">
+                     <string>文案</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_82">
+                     <item row="0" column="0">
+                      <layout class="QGridLayout" name="gridLayout_integral_entrance_copywriting"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QGroupBox" name="groupBox_integral_sign">
+                 <property name="title">
+                  <string>签到</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_83">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_integral_sign"/>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QGroupBox" name="groupBox_integral_sign_copywriting">
+                    <property name="title">
+                     <string>文案</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_80">
+                     <item row="0" column="0">
+                      <layout class="QGridLayout" name="gridLayout_integral_sign_copywriting"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QGroupBox" name="groupBox_integral_gift">
+                 <property name="title">
+                  <string>礼物</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_84">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_integral_gift"/>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QGroupBox" name="groupBox_integral_gift_copywriting">
+                    <property name="title">
+                     <string>文案</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_81">
+                     <item row="0" column="0">
+                      <layout class="QGridLayout" name="gridLayout_integral_gift_copywriting"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QGroupBox" name="groupBox_integral_crud">
+                 <property name="title">
+                  <string>增删改查</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_86">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_integral_crud">
+                    <item row="0" column="0">
+                     <widget class="QGroupBox" name="groupBox_integral_crud_query">
+                      <property name="title">
+                       <string>查询</string>
+                      </property>
+                      <layout class="QGridLayout" name="gridLayout_73">
+                       <item row="0" column="0">
+                        <layout class="QGridLayout" name="gridLayout_integral_crud_query"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QGroupBox" name="groupBox_integral_common">
+                 <property name="title">
+                  <string>通用</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_79">
+                  <item row="0" column="0">
+                   <layout class="QGridLayout" name="gridLayout_integral_common" columnstretch="1,6">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_integral_common_enable">
+                      <property name="text">
+                       <string>启用</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QCheckBox" name="checkBox_integral_common_enable">
+                      <property name="text">
+                       <string>是</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_40">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
     <item row="6" column="1">
@@ -3363,6 +4307,42 @@ font: 75 12pt &quot;微软雅黑&quot;;</string>
       </property>
       <property name="text">
        <string>④聊天页</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QPushButton" name="pushButton_integral_page">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid #dcdfe6;
+background-color: #e6a23c;
+text-align: center;
+padding: 12px 16px;
+border-radius: 4px;
+font: 75 12pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>⑤积分页</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QPushButton" name="pushButton_factory">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid #dcdfe6;
+background-color: #f56c6c;
+text-align: center;
+padding: 12px 16px;
+border-radius: 4px;
+font: 75 12pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>恢复出厂配置</string>
       </property>
      </widget>
     </item>

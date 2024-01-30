@@ -1,6 +1,7 @@
 import traceback, logging
 from copy import deepcopy
 import openai
+from packaging import version
 
 from utils.common import Common
 from utils.logger import Configure_logger
@@ -49,8 +50,8 @@ class Chatgpt:
             message = self.chat_with_gpt(session['msg'])
 
             # 如果返回的消息包含最大上下文长度限制，则删除超长上下文并重试
-            if message.__contains__("This model's maximum context length is 4096 token"):
-                del session['msg'][2:3]
+            if message.__contains__("This model's maximum context length is 409"):
+                del session['msg'][0:3]
                 del session['msg'][len(session['msg']) - 1:len(session['msg'])]
                 message = self.chat(msg, sessionid)
 
@@ -68,7 +69,7 @@ class Chatgpt:
         # 捕获异常并打印堆栈跟踪信息
         except Exception as error:
             logging.error(traceback.format_exc())
-            return str('异常: ' + str(error))
+            return None
 
 
     def get_chat_session(self, sessionid):
@@ -98,41 +99,62 @@ class Chatgpt:
             openai.api_base = self.data_openai['api']
 
             if not self.data_openai['api_key']:
-                return "请设置Api Key"
+                logging.error(f"请设置openai Api Key")
+                return None
             else:
                 # 判断是否所有 API key 均已达到速率限制
                 if self.current_key_index > max_length:
                     self.current_key_index = 0
-                    return "全部Key均已达到速率限制,请等待一分钟后再尝试"
+                    logging.warning(f"全部Key均已达到速率限制,请等待一分钟后再尝试")
+                    return None
                 openai.api_key = self.data_openai['api_key'][self.current_key_index]
 
-            # 调用 ChatGPT 接口生成回复消息
-            resp = openai.ChatCompletion.create(
-                model=self.data_chatgpt['model'],
-                messages=messages
-            )
-            resp = resp['choices'][0]['message']['content']
+            logging.debug(f"openai.__version__={openai.__version__}")
 
+            # 判断openai库版本，1.x.x和0.x.x有破坏性更新
+            if version.parse(openai.__version__) < version.parse('1.0.0'):
+                # 调用 ChatGPT 接口生成回复消息
+                resp = openai.ChatCompletion.create(
+                    model=self.data_chatgpt['model'],
+                    messages=messages,
+                    timeout=30
+                )
+
+                resp = resp['choices'][0]['message']['content']
+            else:
+                logging.debug(f"base_url={openai.api_base}, api_key={openai.api_key}")
+
+                client = openai.OpenAI(base_url=openai.api_base, api_key=openai.api_key)
+                # 调用 ChatGPT 接口生成回复消息
+                resp = client.chat.completions.create(
+                    model=self.data_chatgpt['model'],
+                    messages=messages,
+                    timeout=30
+                )
+
+                resp = resp.choices[0].message.content
         # 处理 OpenAIError 异常
         except openai.OpenAIError as e:
             if str(e).__contains__("Rate limit reached for default-gpt-3.5-turbo") and self.current_key_index <= max_length:
                 self.current_key_index = self.current_key_index + 1
-                logging.info("速率限制，尝试切换key")
-                return self.chat_with_gpt(messages)
+                logging.warning("速率限制，尝试切换key")
+                msg = self.chat_with_gpt(messages)
+                return msg
             elif str(e).__contains__(
                     "Your access was terminated due to violation of our policies") and self.current_key_index <= max_length:
-                logging.info("请及时确认该Key: " + str(openai.api_key) + " 是否正常，若异常，请移除")
+                logging.warning("请及时确认该Key: " + str(openai.api_key) + " 是否正常，若异常，请移除")
 
                 # 判断是否所有 API key 均已尝试
                 if self.current_key_index + 1 > max_length:
                     return str(e)
                 else:
-                    logging.info("访问被阻止，尝试切换Key")
+                    logging.warning("访问被阻止，尝试切换Key")
                     self.current_key_index = self.current_key_index + 1
-                    return self.chat_with_gpt(messages)
+                    msg = self.chat_with_gpt(messages)
+                    return msg
             else:
-                logging.info('openai 接口报错: ' + str(e))
-                resp = "openai 接口报错: " + str(e)
+                logging.error('openai 接口报错: ' + str(e))
+                return None
 
         return resp
 

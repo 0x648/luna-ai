@@ -6,8 +6,12 @@ import schedule
 import random
 import traceback
 import asyncio
+import copy
 
 from functools import partial
+
+from flask import Flask, send_from_directory, render_template, request, jsonify
+from flask_cors import CORS
 
 from google.protobuf.json_format import MessageToDict
 from configparser import ConfigParser
@@ -23,6 +27,8 @@ config = None
 common = None
 my_handle = None
 last_username_list = None
+# 空闲时间计数器
+global_idle_time = 0
 
 
 class kslive(object):
@@ -45,6 +51,7 @@ class kslive(object):
         except Exception as e:
             logging.error(traceback.format_exc())
             logging.error("请检查配置文件")
+            my_handle.abnormal_alarm_handle("platform")
             exit()
 
     def find_file(self, find_path, file_type) -> list:
@@ -143,6 +150,8 @@ class kslive(object):
         self.browser.close()
 
     def handler(self, websocket):
+        global global_idle_time
+
         Message = kuaishou_pb2.SocketMessage()
         Message.ParseFromString(websocket)
         if Message.payloadType == 310:
@@ -155,12 +164,16 @@ class kslive(object):
             if obj.get('commentFeeds', ''):
                 msg_list = obj.get('commentFeeds', '')
                 for i in msg_list:
+                    # 闲时计数清零
+                    global_idle_time = 0
+
                     username = i['user']['userName']
                     pid = i['user']['principalId']
                     content = i['content']
                     logging.info(f"[📧直播间弹幕消息] [{username}]:{content}")
 
                     data = {
+                        "platform": "快手",
                         "username": username,
                         "content": content
                     }
@@ -235,6 +248,41 @@ def start_server():
         logging.error("程序初始化失败！")
         os._exit(0)
 
+    # HTTP API线程
+    def http_api_thread():
+        app = Flask(__name__, static_folder='./')
+        CORS(app)  # 允许跨域请求
+        
+        @app.route('/send', methods=['POST'])
+        def send():
+            global my_handle, config
+
+            try:
+                try:
+                    data_json = request.get_json()
+                    logging.info(f"API收到数据：{data_json}")
+
+                    if data_json["type"] == "reread":
+                        my_handle.reread_handle(data_json)
+                    elif data_json["type"] == "comment":
+                        my_handle.process_data(data_json, "comment")
+                    elif data_json["type"] == "tuning":
+                        my_handle.tuning_handle(data_json)
+
+                    return jsonify({"code": 200, "message": "发送数据成功！"})
+                except Exception as e:
+                    logging.error(f"发送数据失败！{e}")
+                    return jsonify({"code": -1, "message": f"发送数据失败！{e}"})
+
+            except Exception as e:
+                return jsonify({"code": -1, "message": f"发送数据失败！{e}"})
+            
+        app.run(host=config.get("api_ip"), port=config.get("api_port"), debug=False)
+    
+    # HTTP API线程并启动
+    schedule_thread = threading.Thread(target=http_api_thread)
+    schedule_thread.start()
+
     # 定时任务
     def schedule_task(index):
         global config, common, my_handle, last_username_list
@@ -275,6 +323,7 @@ def start_server():
             content = random_copy
 
         data = {
+            "platform": "快手",
             "username": None,
             "content": content
         }
@@ -300,9 +349,10 @@ def start_server():
             # time.sleep(1)  # 控制每次循环的间隔时间，避免过多占用 CPU 资源
 
 
-    # 创建定时任务子线程并启动
-    schedule_thread = threading.Thread(target=run_schedule)
-    schedule_thread.start()
+    if any(item['enable'] for item in config.get("schedule")):
+        # 创建定时任务子线程并启动
+        schedule_thread = threading.Thread(target=run_schedule)
+        schedule_thread.start()
 
     # 启动动态文案
     async def run_trends_copywriting():
@@ -335,7 +385,7 @@ def start_server():
                         # 是否启用提示词对文案内容进行转换
                         if copywriting["prompt_change_enable"]:
                             data_json = {
-                                "user_name": "trends_copywriting",
+                                "username": "trends_copywriting",
                                 "content": copywriting["prompt_change_content"] + copywriting_file_content
                             }
 
@@ -343,7 +393,7 @@ def start_server():
                             data_json["content"] = my_handle.llm_handle(config.get("chat_type"), data_json)
                         else:
                             data_json = {
-                                "user_name": "trends_copywriting",
+                                "username": "trends_copywriting",
                                 "content": copywriting_file_content
                             }
 
@@ -357,8 +407,150 @@ def start_server():
             logging.error(traceback.format_exc())
 
 
-    # 创建动态文案子线程并启动
-    threading.Thread(target=lambda: asyncio.run(run_trends_copywriting())).start()
+    if config.get("trends_copywriting", "enable"):
+        # 创建动态文案子线程并启动
+        threading.Thread(target=lambda: asyncio.run(run_trends_copywriting())).start()
+
+    # 闲时任务
+    async def idle_time_task():
+        global config, global_idle_time
+
+        try:
+            if False == config.get("idle_time_task", "enable"):
+                return
+            
+            logging.info(f"闲时任务线程运行中...")
+
+            # 记录上一次触发的任务类型
+            last_mode = 0
+            comment_copy_list = None
+            local_audio_path_list = None
+
+            overflow_time = int(config.get("idle_time_task", "idle_time"))
+            # 是否开启了随机闲时时间
+            if config.get("idle_time_task", "random_time"):
+                overflow_time = random.randint(0, overflow_time)
+            
+            logging.info(f"闲时时间={overflow_time}秒")
+
+            def load_data_list(type):
+                if type == "comment":
+                    tmp = config.get("idle_time_task", "comment", "copy")
+                elif type == "local_audio":
+                    tmp = config.get("idle_time_task", "local_audio", "path")
+                tmp2 = copy.copy(tmp)
+                return tmp2
+
+            comment_copy_list = load_data_list("comment")
+            local_audio_path_list = load_data_list("local_audio")
+
+            logging.debug(f"comment_copy_list={comment_copy_list}")
+            logging.debug(f"local_audio_path_list={local_audio_path_list}")
+
+            while True:
+                # 每隔一秒的睡眠进行闲时计数
+                await asyncio.sleep(1)
+                global_idle_time = global_idle_time + 1
+
+                # 闲时计数达到指定值，进行闲时任务处理
+                if global_idle_time >= overflow_time:
+                    # 闲时计数清零
+                    global_idle_time = 0
+
+                    # 闲时任务处理
+                    if config.get("idle_time_task", "comment", "enable"):
+                        if last_mode == 0 or not config.get("idle_time_task", "local_audio", "enable"):
+                            # 是否开启了随机触发
+                            if config.get("idle_time_task", "comment", "random"):
+                                if comment_copy_list != []:
+                                    # 随机打乱列表中的元素
+                                    random.shuffle(comment_copy_list)
+                                    comment_copy = comment_copy_list.pop(0)
+                                else:
+                                    # 刷新list数据
+                                    comment_copy_list = load_data_list("comment")
+                                    # 随机打乱列表中的元素
+                                    random.shuffle(comment_copy_list)
+                                    comment_copy = comment_copy_list.pop(0)
+                            else:
+                                if comment_copy_list != []:
+                                    comment_copy = comment_copy_list.pop(0)
+                                else:
+                                    # 刷新list数据
+                                    comment_copy_list = load_data_list("comment")
+                                    comment_copy = comment_copy_list.pop(0)
+
+                            # 发送给处理函数
+                            data = {
+                                "platform": "快手",
+                                "username": "闲时任务",
+                                "type": "comment",
+                                "content": comment_copy
+                            }
+
+                            my_handle.process_data(data, "idle_time_task")
+
+                            # 模式切换
+                            last_mode = 1
+
+                            overflow_time = int(config.get("idle_time_task", "idle_time"))
+                            # 是否开启了随机闲时时间
+                            if config.get("idle_time_task", "random_time"):
+                                overflow_time = random.randint(0, overflow_time)
+                            logging.info(f"闲时时间={overflow_time}秒")
+
+                            continue
+                    
+                    if config.get("idle_time_task", "local_audio", "enable"):
+                        if last_mode == 1 or not config.get("idle_time_task", "comment", "enable"):
+                            # 是否开启了随机触发
+                            if config.get("idle_time_task", "local_audio", "random"):
+                                if local_audio_path_list != []:
+                                    # 随机打乱列表中的元素
+                                    random.shuffle(local_audio_path_list)
+                                    local_audio_path = local_audio_path_list.pop(0)
+                                else:
+                                    # 刷新list数据
+                                    local_audio_path_list = load_data_list("local_audio")
+                                    # 随机打乱列表中的元素
+                                    random.shuffle(local_audio_path_list)
+                                    local_audio_path = local_audio_path_list.pop(0)
+                            else:
+                                if local_audio_path_list != []:
+                                    local_audio_path = local_audio_path_list.pop(0)
+                                else:
+                                    # 刷新list数据
+                                    local_audio_path_list = load_data_list("local_audio")
+                                    local_audio_path = local_audio_path_list.pop(0)
+
+                            # 发送给处理函数
+                            data = {
+                                "platform": "快手",
+                                "username": "闲时任务",
+                                "type": "local_audio",
+                                "content": common.extract_filename(local_audio_path, False),
+                                "file_path": local_audio_path
+                            }
+
+                            my_handle.process_data(data, "idle_time_task")
+
+                            # 模式切换
+                            last_mode = 0
+
+                            overflow_time = int(config.get("idle_time_task", "idle_time"))
+                            # 是否开启了随机闲时时间
+                            if config.get("idle_time_task", "random_time"):
+                                overflow_time = random.randint(0, overflow_time)
+                            logging.info(f"闲时时间={overflow_time}秒")
+
+                            continue
+
+        except Exception as e:
+            logging.error(traceback.format_exc())
+
+    if config.get("idle_time_task", "enable"):
+        # 创建闲时任务子线程并启动
+        threading.Thread(target=lambda: asyncio.run(idle_time_task())).start()
 
 
     run().run_live()

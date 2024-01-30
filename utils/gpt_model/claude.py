@@ -75,7 +75,7 @@ class Claude:
             return None
 
     # 获取claude返回内容
-    def get_claude_resp(self, text):
+    def get_resp(self, text):
         response = self.send_message(self.dm_channel_id, text)
         if response:
             last_message_timestamp = response['ts']

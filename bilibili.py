@@ -4,8 +4,12 @@ import schedule
 import random
 import asyncio
 import traceback
+import copy
 
 from functools import partial
+
+from flask import Flask, send_from_directory, render_template, request, jsonify
+from flask_cors import CORS
 
 # 导入所需的库
 from bilibili_api import Credential, live, sync, login
@@ -29,6 +33,8 @@ common = None
 my_handle = None
 # last_liveroom_data = None
 last_username_list = None
+# 空闲时间计数器
+global_idle_time = 0
 
 # 点火起飞
 def start_server():
@@ -42,6 +48,11 @@ def start_server():
     log_path = "./log/log-" + common.get_bj_time(1) + ".txt"
     Configure_logger(log_path)
 
+    # 获取 httpx 库的日志记录器
+    httpx_logger = logging.getLogger("httpx")
+    # 设置 httpx 日志记录器的级别为 WARNING
+    httpx_logger.setLevel(logging.WARNING)
+
     # 最新入场的用户名列表
     last_username_list = [""]
 
@@ -50,6 +61,40 @@ def start_server():
         logging.error("程序初始化失败！")
         os._exit(0)
 
+    # HTTP API线程
+    def http_api_thread():
+        app = Flask(__name__, static_folder='./')
+        CORS(app)  # 允许跨域请求
+        
+        @app.route('/send', methods=['POST'])
+        def send():
+            global my_handle, config
+
+            try:
+                try:
+                    data_json = request.get_json()
+                    logging.info(f"API收到数据：{data_json}")
+
+                    if data_json["type"] == "reread":
+                        my_handle.reread_handle(data_json)
+                    elif data_json["type"] == "comment":
+                        my_handle.process_data(data_json, "comment")
+                    elif data_json["type"] == "tuning":
+                        my_handle.tuning_handle(data_json)
+
+                    return jsonify({"code": 200, "message": "发送数据成功！"})
+                except Exception as e:
+                    logging.error(f"发送数据失败！{e}")
+                    return jsonify({"code": -1, "message": f"发送数据失败！{e}"})
+
+            except Exception as e:
+                return jsonify({"code": -1, "message": f"发送数据失败！{e}"})
+            
+        app.run(host=config.get("api_ip"), port=config.get("api_port"), debug=False)
+    
+    # HTTP API线程并启动
+    schedule_thread = threading.Thread(target=http_api_thread)
+    schedule_thread.start()
 
     # 添加用户名到最新的用户名列表
     def add_username_to_last_username_list(data):
@@ -100,6 +145,7 @@ def start_server():
             content = random_copy
 
         data = {
+            "platform": "哔哩哔哩",
             "username": None,
             "content": content
         }
@@ -127,9 +173,10 @@ def start_server():
             # time.sleep(1)  # 控制每次循环的间隔时间，避免过多占用 CPU 资源
 
 
-    # 创建定时任务子线程并启动
-    schedule_thread = threading.Thread(target=run_schedule)
-    schedule_thread.start()
+    if any(item['enable'] for item in config.get("schedule")):
+        # 创建定时任务子线程并启动
+        schedule_thread = threading.Thread(target=run_schedule)
+        schedule_thread.start()
 
 
     # 启动动态文案
@@ -163,7 +210,7 @@ def start_server():
                         # 是否启用提示词对文案内容进行转换
                         if copywriting["prompt_change_enable"]:
                             data_json = {
-                                "user_name": "trends_copywriting",
+                                "username": "trends_copywriting",
                                 "content": copywriting["prompt_change_content"] + copywriting_file_content
                             }
 
@@ -171,7 +218,7 @@ def start_server():
                             data_json["content"] = my_handle.llm_handle(config.get("chat_type"), data_json)
                         else:
                             data_json = {
-                                "user_name": "trends_copywriting",
+                                "username": "trends_copywriting",
                                 "content": copywriting_file_content
                             }
 
@@ -184,9 +231,151 @@ def start_server():
         except Exception as e:
             logging.error(traceback.format_exc())
 
+    if config.get("trends_copywriting", "enable"):
+        # 创建动态文案子线程并启动
+        threading.Thread(target=lambda: asyncio.run(run_trends_copywriting())).start()
 
-    # 创建动态文案子线程并启动
-    threading.Thread(target=lambda: asyncio.run(run_trends_copywriting())).start()
+    # 闲时任务
+    async def idle_time_task():
+        global config, global_idle_time
+
+        try:
+            if False == config.get("idle_time_task", "enable"):
+                return
+            
+            logging.info(f"闲时任务线程运行中...")
+
+            # 记录上一次触发的任务类型
+            last_mode = 0
+            comment_copy_list = None
+            local_audio_path_list = None
+
+            overflow_time = int(config.get("idle_time_task", "idle_time"))
+            # 是否开启了随机闲时时间
+            if config.get("idle_time_task", "random_time"):
+                overflow_time = random.randint(0, overflow_time)
+            
+            logging.info(f"闲时时间={overflow_time}秒")
+
+            def load_data_list(type):
+                if type == "comment":
+                    tmp = config.get("idle_time_task", "comment", "copy")
+                elif type == "local_audio":
+                    tmp = config.get("idle_time_task", "local_audio", "path")
+                tmp2 = copy.copy(tmp)
+                return tmp2
+
+            comment_copy_list = load_data_list("comment")
+            local_audio_path_list = load_data_list("local_audio")
+
+            logging.debug(f"comment_copy_list={comment_copy_list}")
+            logging.debug(f"local_audio_path_list={local_audio_path_list}")
+
+            while True:
+                # 每隔一秒的睡眠进行闲时计数
+                await asyncio.sleep(1)
+                global_idle_time = global_idle_time + 1
+
+                # 闲时计数达到指定值，进行闲时任务处理
+                if global_idle_time >= overflow_time:
+                    # 闲时计数清零
+                    global_idle_time = 0
+
+                    # 闲时任务处理
+                    if config.get("idle_time_task", "comment", "enable"):
+                        if last_mode == 0 or not config.get("idle_time_task", "local_audio", "enable"):
+                            # 是否开启了随机触发
+                            if config.get("idle_time_task", "comment", "random"):
+                                if comment_copy_list != []:
+                                    # 随机打乱列表中的元素
+                                    random.shuffle(comment_copy_list)
+                                    comment_copy = comment_copy_list.pop(0)
+                                else:
+                                    # 刷新list数据
+                                    comment_copy_list = load_data_list("comment")
+                                    # 随机打乱列表中的元素
+                                    random.shuffle(comment_copy_list)
+                                    comment_copy = comment_copy_list.pop(0)
+                            else:
+                                if comment_copy_list != []:
+                                    comment_copy = comment_copy_list.pop(0)
+                                else:
+                                    # 刷新list数据
+                                    comment_copy_list = load_data_list("comment")
+                                    comment_copy = comment_copy_list.pop(0)
+
+                            # 发送给处理函数
+                            data = {
+                                "platform": "哔哩哔哩",
+                                "username": "闲时任务",
+                                "type": "comment",
+                                "content": comment_copy
+                            }
+
+                            my_handle.process_data(data, "idle_time_task")
+
+                            # 模式切换
+                            last_mode = 1
+
+                            overflow_time = int(config.get("idle_time_task", "idle_time"))
+                            # 是否开启了随机闲时时间
+                            if config.get("idle_time_task", "random_time"):
+                                overflow_time = random.randint(0, overflow_time)
+                            logging.info(f"闲时时间={overflow_time}秒")
+
+                            continue
+                    
+                    if config.get("idle_time_task", "local_audio", "enable"):
+                        if last_mode == 1 or not config.get("idle_time_task", "comment", "enable"):
+                            # 是否开启了随机触发
+                            if config.get("idle_time_task", "local_audio", "random"):
+                                if local_audio_path_list != []:
+                                    # 随机打乱列表中的元素
+                                    random.shuffle(local_audio_path_list)
+                                    local_audio_path = local_audio_path_list.pop(0)
+                                else:
+                                    # 刷新list数据
+                                    local_audio_path_list = load_data_list("local_audio")
+                                    # 随机打乱列表中的元素
+                                    random.shuffle(local_audio_path_list)
+                                    local_audio_path = local_audio_path_list.pop(0)
+                            else:
+                                if local_audio_path_list != []:
+                                    local_audio_path = local_audio_path_list.pop(0)
+                                else:
+                                    # 刷新list数据
+                                    local_audio_path_list = load_data_list("local_audio")
+                                    local_audio_path = local_audio_path_list.pop(0)
+
+                            # 发送给处理函数
+                            data = {
+                                "platform": "哔哩哔哩",
+                                "username": "闲时任务",
+                                "type": "local_audio",
+                                "content": common.extract_filename(local_audio_path, False),
+                                "file_path": local_audio_path
+                            }
+
+                            my_handle.process_data(data, "idle_time_task")
+
+                            # 模式切换
+                            last_mode = 0
+
+                            overflow_time = int(config.get("idle_time_task", "idle_time"))
+                            # 是否开启了随机闲时时间
+                            if config.get("idle_time_task", "random_time"):
+                                overflow_time = random.randint(0, overflow_time)
+                            logging.info(f"闲时时间={overflow_time}秒")
+
+                            continue
+
+        except Exception as e:
+            logging.error(traceback.format_exc())
+
+    if config.get("idle_time_task", "enable"):
+        # 创建闲时任务子线程并启动
+        threading.Thread(target=lambda: asyncio.run(idle_time_task())).start()
+
 
     try:
         if config.get("bilibili", "login_type") == "cookie":
@@ -213,6 +402,13 @@ def start_server():
             )
         elif config.get("bilibili", "login_type") == "手机扫码":
             credential = login.login_with_qrcode()
+        elif config.get("bilibili", "login_type") == "手机扫码-终端":
+            credential = login.login_with_qrcode_term()
+        elif config.get("bilibili", "login_type") == "账号密码登录":
+            bilibili_username = config.get("bilibili", "username")
+            bilibili_password = config.get("bilibili", "password")
+
+            credential = login.login_with_password(bilibili_username, bilibili_password)
         elif config.get("bilibili", "login_type") == "不登录":
             credential = None
         else:
@@ -222,6 +418,8 @@ def start_server():
         room = live.LiveDanmaku(my_handle.get_room_id(), credential=credential)
     except Exception as e:
         logging.error(traceback.format_exc())
+        my_handle.abnormal_alarm_handle("platform")
+        # os._exit(0)
 
     """
     DANMU_MSG: 用户发送弹幕
@@ -254,12 +452,18 @@ def start_server():
         处理直播间弹幕事件
         :param event: 弹幕事件数据
         """
+        global global_idle_time
+
+        # 闲时计数清零
+        global_idle_time = 0
+    
         content = event["data"]["info"][1]  # 获取弹幕内容
         user_name = event["data"]["info"][2][1]  # 获取发送弹幕的用户昵称
 
         logging.info(f"[{user_name}]: {content}")
 
         data = {
+            "platform": "哔哩哔哩",
             "username": user_name,
             "content": content
         }
@@ -283,6 +487,7 @@ def start_server():
         logging.info(f"用户：{user_name} 赠送 {combo_num} 个 {gift_name}，总计 {combo_total_coin}电池")
 
         data = {
+            "platform": "哔哩哔哩",
             "gift_name": gift_name,
             "username": user_name,
             "num": combo_num,
@@ -313,6 +518,7 @@ def start_server():
         logging.info(f"用户：{user_name} 赠送 {num} 个 {gift_name}，单价 {discount_price}电池，总计 {combo_total_coin}电池")
 
         data = {
+            "platform": "哔哩哔哩",
             "gift_name": gift_name,
             "username": user_name,
             "num": num,
@@ -344,6 +550,7 @@ def start_server():
         logging.info(f"用户：{uname} 发送 {price}元 SC：{message}")
 
         data = {
+            "platform": "哔哩哔哩",
             "gift_name": "SC",
             "username": uname,
             "num": 1,
@@ -373,6 +580,7 @@ def start_server():
         add_username_to_last_username_list(user_name)
 
         data = {
+            "platform": "哔哩哔哩",
             "username": user_name,
             "content": "进入直播间"
         }
@@ -404,7 +612,7 @@ def start_server():
     except KeyboardInterrupt:
         logging.warning('程序被强行退出')
     finally:
-        logging.warning('关闭连接...')
+        logging.warning('关闭连接...可能是直播间号配置有误或者其他原因导致的')
         os._exit(0)
 
 

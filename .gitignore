@@ -180,7 +180,6 @@ douyin/log/*.txt
 
 # 测试文件夹
 test/
-game/
 
 dev/
 
@@ -212,3 +211,20 @@ cookie/*.json
 
 # 数据库
 data/data.db
+
+webui2.py
+
+data/本地问答库-ikaros.json
+
+config copy.json
+
+backup
+
+Miniconda3/
+
+models/mo*
+
+out/sd/*
+
+# 文案
+out/copy*/*.wav
