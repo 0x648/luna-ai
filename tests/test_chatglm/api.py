@@ -9,7 +9,7 @@ temperature = 0.95
 
 
 # 调用chatglm接口，获取返回内容
-def get_chatglm_resp(prompt, history=[]):
+def get_resp(prompt, history=[]):
     data_json = {
         "prompt": prompt, 
         "history": history,
@@ -35,4 +35,4 @@ def get_chatglm_resp(prompt, history=[]):
         return None
     
 
-print(get_chatglm_resp("你好"))
+print(get_resp("你好"))

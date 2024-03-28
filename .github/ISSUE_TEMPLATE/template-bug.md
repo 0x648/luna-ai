@@ -8,7 +8,7 @@ labels: ["bug"]
 <!-- 请在您提交 bug 之前，回答以下这些问题。 | Please answer these questions before you submit a bug. -->
 
 #### 您使用的版本？ | Your usage version?
-例如：v0.16.0 或者 20230806
+例如：main 或者 20230806
 
 #### 您使用的python版本&系统环境？ | Your usage python version & system?
 例如：

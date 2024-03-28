@@ -18,7 +18,7 @@
             justify-content: center;
             gap: 20px;
             margin-top: 20px;
-            top: 300px;
+            top: 100px;
             position: relative;
         }
 
@@ -52,14 +52,34 @@
     // 投资方数据
     const investorsData = [
         {
+            name: "戈丁",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231124143116_%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20231124223002.jpg",
+            amount: "￥908.88"
+        },
+        {
+            name: "存在感患者",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230722160559_QQ%E5%9B%BE%E7%89%8720230722234802.jpg",
+            amount: "￥686.8"
+        },
+        {
             name: " AI",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230722152412_QQ%E5%9B%BE%E7%89%8720230722232316.jpg",
             amount: "￥666.66"
         },
         {
-            name: "存在感患者",
-            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230722160559_QQ%E5%9B%BE%E7%89%8720230722234802.jpg",
-            amount: "￥406"
+            name: "胡宸",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230923093032_QQ%E5%9B%BE%E7%89%8720230923172945.jpg",
+            amount: "￥468"
+        },
+        {
+            name: "/:)★XSIN",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240314150105_QQ%E5%9B%BE%E7%89%8720240310195619.jpg",
+            amount: "￥400"
+        },
+        {
+            name: "Kingsss",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231201155829_QQ%E5%9B%BE%E7%89%8720231201235446.jpg",
+            amount: "￥390"
         },
         {
             name: "月零宫白",
@@ -72,6 +92,21 @@
             amount: "￥266.6"
         },
         {
+            name: "曹某",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240314140043_image3.png",
+            amount: "￥266.33"
+        },
+        {
+            name: "真的要多喝热水",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231122140807_QQ%E5%9B%BE%E7%89%8720231122220722.jpg",
+            amount: "￥253.99"
+        },
+        {
+            name: "所以一步一步去实现",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231102080949_QQ%E5%9B%BE%E7%89%8720231102160835.jpg",
+            amount: "￥210"
+        },
+        {
             name: "子梦",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230730083335_%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230730163219.jpg",
             amount: "￥200"
@@ -82,9 +117,44 @@
             amount: "￥200"
         },
         {
+            name: "财神",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231108144237_QQ%E5%9B%BE%E7%89%8720231108223953.jpg",
+            amount: "￥200"
+        },
+        {
+            name: "候志华",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231203032559_QQ%E5%9B%BE%E7%89%8720231203112519.jpg",
+            amount: "￥200"
+        },
+        {
+            name: "天然呆",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240303081807_QQ%E5%9B%BE%E7%89%8720240303161650.jpg",
+            amount: "￥188"
+        },
+        {
+            name: "J丶异乡人",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230920161039_111.jpg",
+            amount: "￥188"
+        },
+        {
+            name: "Aezzn",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240324155533_QQ%E5%9B%BE%E7%89%8720240324235457.jpg",
+            amount: "￥188"
+        },
+        {
             name: "花开一季",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230817152316_QQ%E5%9B%BE%E7%89%8720230817232145.jpg",
             amount: "￥150"
+        },
+        {
+            name: "👀",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231120130618_QQ%E5%9B%BE%E7%89%8720231120210431.jpg",
+            amount: "￥150"
+        },
+        {
+            name: "哪有",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231010060048_QQ%E5%9B%BE%E7%89%8720231010135857.jpg",
+            amount: "￥149"
         },
         {
             name: "灯漉阑珊",
@@ -92,9 +162,29 @@
             amount: "￥146.98"
         },
         {
+            name: "灵吾玄志",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240303075801_imag2e.png",
+            amount: "￥135"
+        },
+        {
+            name: "kunfox-",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230902161301_otaku.jpg",
+            amount: "￥130"
+        },
+        {
             name: "狼牙",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230727112104_QQ%E5%9B%BE%E7%89%8720230727192026.png",
             amount: "￥123"
+        },
+        {
+            name: "汪院",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240129024900_QQ%E5%9B%BE%E7%89%8720240129104632.jpg",
+            amount: "￥123"
+        },
+        {
+            name: "可笑",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230820095537_QQ%E5%9B%BE%E7%89%8720230820175506.jpg",
+            amount: "￥120"
         },
         {
             name: "一如既往",
@@ -132,14 +222,144 @@
             amount: "￥100"
         },
         {
+            name: "凤凰",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230925111651_QQ%E5%9B%BE%E7%89%8720230925190851.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "Jerry",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230926154835_%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230926234750.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "榛名鹿奇",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231007064418_817464ce72638a612dc65eca7c9eb73ffeb4cc30.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "イカロス-メラン",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231007064418_7d935549ce8991debc4091d9ee881a4cdc4622ac.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "茜猫猫",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231009131835_QQ%E5%9B%BE%E7%89%8720231009211511.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "小6",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231126075842_QQ%E5%9B%BE%E7%89%8720231126155821.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "Zz",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231210134734_image.png",
+            amount: "￥100"
+        },
+        {
+            name: "AnarchoTyranny",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231212152840_QQ%E5%9B%BE%E7%89%8720231212232830.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "小强。",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231214155736_QQ%E5%9B%BE%E7%89%8720231214235543.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "小茶包",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240106135922_QQ%E5%9B%BE%E7%89%8720240106215730.png",
+            amount: "￥100"
+        },
+        {
+            name: "徐子斐",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240108125912_QQ%E5%9B%BE%E7%89%8720240108205838.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "music",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240122065153_QQ%E5%9B%BE%E7%89%8720240122144748.png",
+            amount: "￥100"
+        },
+        {
+            name: "~~流星~~",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240215060606_QQ%E5%9B%BE%E7%89%8720240215140522.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "奶酪馅饼ですね",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240219073301_QQ%E5%9B%BE%E7%89%8720240219153230.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "不醉不归",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240320155329_QQ%E5%9B%BE%E7%89%8720240320235305.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "二囍",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240322134625_QQ%E5%9B%BE%E7%89%8720240322214605.jpg",
+            amount: "￥100"
+        },
+        {
+            name: "海哥哥",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240327133453_%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240327213240.jpg",
+            amount: "￥100"
+        },
+        {
             name: "很养眼的丑男",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230722162732_QQ%E5%9B%BE%E7%89%8720230723000544.jpg",
             amount: "￥88"
         },
         {
+            name: "none",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231201155900_AgAABTM-uTiMo8J3YrpDw4o57-UT6PcJ.png",
+            amount: "￥88"
+        },
+        {
+            name: "周奔驰",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240209134012_QQ%E5%9B%BE%E7%89%8720240209213516.jpg",
+            amount: "￥74.88"
+        },
+        {   
+            name: "超越前行",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240219055018_QQ%E5%9B%BE%E7%89%8720240219134904.jpg",
+            amount: "￥72"
+        },
+        {
+            name: "三十马",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231009135152_QQ%E5%9B%BE%E7%89%8720231009215135.png",
+            amount: "￥70"
+        },
+        {
+            name: "Astro_YuYang",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231126074644_QQ%E5%9B%BE%E7%89%8720231126154634.jpg",
+            amount: "￥66.66"
+        },
+        {
+            name: "Ray",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240219070116_QQ%E5%9B%BE%E7%89%8720240219150007.jpg",
+            amount: "￥66.66"
+        },
+        {
             name: "逸戈",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230802153821_QQ%E5%9B%BE%E7%89%8720230802233731.png",
             amount: "￥66"
+        },
+        {
+            name: "王家程",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231108082640_QQ%E5%9B%BE%E7%89%8720231108162541.jpg",
+            amount: "￥66"
+        },
+        {
+            name: "霈sky",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240307032531_QQ%E5%9B%BE%E7%89%8720240307112434.jpg",
+            amount: "￥66"
+        },
+        {
+            name: "♾️",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231219144349_QQ%E5%9B%BE%E7%89%8720231219220916.jpg",
+            amount: "￥63.33"
         },
         {
             name: "陈杰",
@@ -157,14 +377,54 @@
             amount: "￥50"
         },
         {
+            name: "©*U",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230923093032_QQ%E5%9B%BE%E7%89%8720230923172927.png",
+            amount: "￥50"
+        },
+        {
+            name: "つまらない勿忘吾",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231207141042_QQ%E5%9B%BE%E7%89%8720231207212740.jpg",
+            amount: "￥50"
+        },
+        {
+            name: "苏喂",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240210124540_QQ%E5%9B%BE%E7%89%8720240210204509.jpg",
+            amount: "￥50"
+        },
+        {
+            name: "烟雨夕阳中",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240227055431_QQ%E5%9B%BE%E7%89%8720240227135347.jpg",
+            amount: "￥50"
+        },
+        {
+            name: "珂",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240309040204_QQ%E5%9B%BE%E7%89%8720240309114614.jpg",
+            amount: "￥50"
+        },
+        {
             name: "Yuno",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230719132530_QQ%E5%9B%BE%E7%89%8720230719212024.jpg",
             amount: "￥38"
         },
         {
-            name: "kunfox-",
-            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230902161301_otaku.jpg",
+            name: "惡魔惡魔",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231231143423_QQ%E5%9B%BE%E7%89%8720231231223147.jpg",
+            amount: "￥35"
+        },
+        {
+            name: "淘码吧",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240118132057_QQ%E5%9B%BE%E7%89%8720240118211749.jpg",
+            amount: "￥33"
+        },
+        {
+            name: "~&奋则乐&~",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240227055440_QQ%E5%9B%BE%E7%89%8720240227135356.jpg",
             amount: "￥30"
+        },
+        {
+            name: "清川.",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231219135755_QQ%E5%9B%BE%E7%89%8720231219215738.jpg",
+            amount: "￥28.8"
         },
         {
             name: "YQ233",
@@ -172,13 +432,18 @@
             amount: "￥22"
         },
         {
-            name: "真的要多喝热水",
-            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230814144413_QQ%E5%9B%BE%E7%89%8720230814224327.jpg",
-            amount: "￥20.99"
+            name: "东亮&Daniel",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231125123002_QQ%E5%9B%BE%E7%89%8720231125202825.jpg",
+            amount: "￥20"
         },
         {
-            name: "可笑",
-            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230820095537_QQ%E5%9B%BE%E7%89%8720230820175506.jpg",
+            name: "欣念·意",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230723115608_QQ%E5%9B%BE%E7%89%8720230723195602.png",
+            amount: "￥20"
+        },
+        {
+            name: "海狸",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240324155746_QQ%E5%9B%BE%E7%89%8720240324235713.jpg",
             amount: "￥20"
         },
         {
@@ -187,9 +452,29 @@
             amount: "￥18.88"
         },
         {
+            name: "歪曲",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240220161822_QQ%E5%9B%BE%E7%89%8720240221001656.jpg",
+            amount: "￥18"
+        },
+        {
             name: "昏睡红糖",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230719074436_%E6%98%8F%E7%9D%A1%E7%BA%A2%E7%B3%96.jpg",
             amount: "￥17"
+        },
+        {
+            name: "徐无上",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231119104314_QQ%E5%9B%BE%E7%89%8720231119184129.jpg",
+            amount: "￥15"
+        },
+        {
+            name: "蘑菇点点",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231126074533_QQ%E5%9B%BE%E7%89%8720231126154211.jpg",
+            amount: "￥11"
+        },
+        {
+            name: "aiyahaonan",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231124143344_AgAABTM-uThDap69ASFOvLAtBgEukCXk.png",
+            amount: "￥10.58"
         },
         {
             name: "破洞酷酷",
@@ -207,8 +492,8 @@
             amount: "￥10"
         },
         {
-            name: "欣念·意",
-            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230723115608_QQ%E5%9B%BE%E7%89%8720230723195602.png",
+            name: "卖女孩的小火柴",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231212152557_QQ%E5%9B%BE%E7%89%8720231212232525.jpg",
             amount: "￥10"
         },
         {
@@ -222,6 +507,16 @@
             amount: "￥8.8"
         },
         {
+            name: "77",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231009133208_QQ%E5%9B%BE%E7%89%8720231009213136.png",
+            amount: "￥6.66"
+        },
+        {
+            name: "橘子",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240322135725_QQ%E5%9B%BE%E7%89%8720240322215623.jpg",
+            amount: "￥6.66"
+        },
+        {
             name: "于离别留己柴己白红真",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230719114214_QQ%E5%9B%BE%E7%89%8720230719192535.jpg",
             amount: "￥6.6"
@@ -230,7 +525,37 @@
             name: "冯古",
             avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_230719074436_%E5%86%AF%E5%8F%A4.jpg",
             amount: "￥6"
-        }
+        },
+        {
+            name: "✿❀Ikaros❀҉✿💖",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231231143423_image.jpeg",
+            amount: "￥6"
+        },
+        {
+            name: "萱逸飞",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240307032531_QQ%E5%9B%BE%E7%89%8720240307112305.jpg",
+            amount: "￥5"
+        },
+        {
+            name: "明月萧残",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_231126161028_QQ%E5%9B%BE%E7%89%8720231127001005.jpg",
+            amount: "￥4"
+        },
+        {
+            name: "自由人",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240327013613_QQ%E5%9B%BE%E7%89%8720240327090532.jpg",
+            amount: "￥3.54"
+        },
+        {
+            name: "Waves_Man",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240322135510_QQ%E5%9B%BE%E7%89%8720240322215445.jpg",
+            amount: "￥1"
+        },
+        {
+            name: "超级棒",
+            avatar: "https://images.cnblogs.com/cnblogs_com/ikaros-521/2328032/o_240307032710_QQ%E5%9B%BE%E7%89%8720240307112635.jpg",
+            amount: "￥0.01"
+        },
     ];
 
     // 获取投资方信息容器
@@ -242,7 +567,7 @@
             <div>
                 <img src="${investor.avatar}" class="investor-avatar">
                 <p class="investor-name">${investor.name}</p>
-                <p class="investor-amount">投资金额: ${investor.amount}</p>
+                <p class="investor-amount">投资: ${investor.amount}</p>
             </div>
         `;
         // 添加到容器中

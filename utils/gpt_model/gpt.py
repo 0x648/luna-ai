@@ -10,30 +10,52 @@
 import logging
 
 from utils.gpt_model.chatglm import Chatglm
+from utils.gpt_model.qwen import Qwen
 from utils.gpt_model.chatgpt import Chatgpt
 from utils.gpt_model.claude import Claude
 from utils.gpt_model.claude2 import Claude2
 from utils.gpt_model.text_generation_webui import TEXT_GENERATION_WEBUI
 from utils.gpt_model.sparkdesk import SPARKDESK
 from utils.gpt_model.langchain_chatglm import Langchain_ChatGLM
+from utils.gpt_model.langchain_chatchat import Langchain_ChatChat
 from utils.gpt_model.zhipu import Zhipu
 from utils.gpt_model.bard import Bard_api
-
+from utils.gpt_model.yiyan import Yiyan
+from utils.gpt_model.tongyi import TongYi
+from utils.gpt_model.tongyixingchen import TongYiXingChen
+from utils.gpt_model.my_qianfan import My_QianFan
+from utils.gpt_model.my_wenxinworkshop import My_WenXinWorkShop
+from utils.gpt_model.gemini import Gemini
+from utils.gpt_model.qanything import QAnything
+from utils.gpt_model.koboldcpp import Koboldcpp
+from utils.gpt_model.anythingllm import AnythingLLM
 
 class GPT_Model:
-    # 模型配置信息
-    openai = None  # 只有openai是config配置，其他均是实例
-    chatgpt = None
-    claude = None
-    claude2 = None
-    chatglm = None
-    text_generation_webui = None
-    sparkdesk = None
-    langchain_chatglm = None
-    zhipu = None
-    bard_api = None
-
+    openai = None
+    
     def set_model_config(self, model_name, config):
+        model_classes = {
+            "claude": Claude,
+            "claude2": Claude2,
+            "chatglm": Chatglm,
+            "qwen": Qwen,
+            "text_generation_webui": TEXT_GENERATION_WEBUI,
+            "sparkdesk": SPARKDESK,
+            "langchain_chatglm": Langchain_ChatGLM,
+            "langchain_chatchat": Langchain_ChatChat,
+            "zhipu": Zhipu,
+            "bard": Bard_api,
+            "yiyan": Yiyan,
+            "tongyi": TongYi,
+            "tongyixingchen": TongYiXingChen,
+            "my_wenxinworkshop": My_WenXinWorkShop,
+            "my_qianfan": My_QianFan,
+            "gemini": Gemini,
+            "qanything": QAnything,
+            "koboldcpp": Koboldcpp,
+            "anythingllm": AnythingLLM,
+        }
+
         if model_name == "openai":
             self.openai = config
         elif model_name == "chatgpt":
@@ -41,49 +63,24 @@ class GPT_Model:
                 logging.error("openai key 为空，无法配置chatgpt模型")
                 exit(-1)
             self.chatgpt = Chatgpt(self.openai, config)
-        elif model_name == "claude":
-            self.claude = Claude(config)
-        elif model_name == "claude2":
-            self.claude2 = Claude2(config)
-        elif model_name == "chatglm":
-            self.chatglm = Chatglm(config)
-        elif model_name == "text_generation_webui":
-            self.text_generation_webui = TEXT_GENERATION_WEBUI(config)
-        elif model_name == "sparkdesk":
-            self.sparkdesk = SPARKDESK(config)
-        elif model_name == "langchain_chatglm":
-            self.langchain_chatglm = Langchain_ChatGLM(config)
-        elif model_name == "zhipu":
-            self.zhipu = Zhipu(config)
-        elif model_name == "bard":
-            self.bard_api = Bard_api(config)
+        elif model_name in model_classes:
+            setattr(self, model_name, model_classes[model_name](config))
+
+    def set_vision_model_config(self, model_name, config):
+        model_classes = {
+            "gemini": Gemini,
+        }
+
+        setattr(self, model_name, model_classes[model_name](config))
 
     def get(self, name):
         logging.info("GPT_MODEL: 进入get方法")
-        match name:
-            case "openai":
-                return self.openai
-            case "chatgpt":
-                return self.chatgpt
-            case "claude":
-                return self.claude
-            case "claude2":
-                return self.claude2
-            case "chatglm":
-                return self.chatglm
-            case "text_generation_webui":
-                return self.text_generation_webui
-            case "sparkdesk":
-                return self.sparkdesk
-            case "langchain_chatglm":
-                return self.langchain_chatglm
-            case "zhipu":
-                return self.zhipu
-            case "bard":
-                return self.bard_api
-            case _:
-                logging.error(f"{name} 该模型不支持")
-                return
+        try:
+            if name != "reread":
+                return getattr(self, name)
+        except AttributeError:
+            logging.warning(f"{name} 该模型不支持，如果不是LLM的类型，那就只是个警告，可以正常使用，请放心")
+            return None
 
     def get_openai_key(self):
         if self.openai is None:

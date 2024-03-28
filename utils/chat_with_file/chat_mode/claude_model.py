@@ -93,7 +93,7 @@ class Claude_mode(Chat_model):
         else:
             content = related_data + "\n" + self.question_prompt + " question: " + question
 
-        resp = self.claude.get_claude_resp(content)
+        resp = self.claude.get_resp(content)
         return resp
 
 

@@ -1,5 +1,4 @@
-import json, logging
-import requests
+import logging
 
 from sparkdesk_web.core import SparkWeb
 from sparkdesk_api.core import SparkAPI
@@ -16,35 +15,38 @@ class SPARKDESK:
         Configure_logger(file_path)
 
         self.type = data["type"]
-        # web版配置
-        self.cookie = data["cookie"]
-        self.fd = data["fd"]
-        self.GtToken = data["GtToken"]
-        # api版配置
-        self.app_id = data["app_id"]
-        self.api_secret = data["api_secret"]
-        self.api_key = data["api_key"]
+
 
         self.sparkWeb = None
         self.sparkAPI = None
 
-        if self.cookie != "" and self.fd != "" and self.GtToken != "":
+        if data["cookie"] != "" and data["fd"] != "" and data["GtToken"] != "":
             self.sparkWeb = SparkWeb(
-                cookie = self.cookie,
-                fd = self.fd,
-                GtToken = self.GtToken
+                cookie = data["cookie"],
+                fd = data["fd"],
+                GtToken = data["GtToken"]
             )
-        elif self.app_id != "" and self.api_secret != "" and self.api_key != "":
-            self.sparkAPI = SparkAPI(
-                app_id = self.app_id,
-                api_secret = self.api_secret,
-                api_key = self.api_key
-            )
+        elif data["app_id"] != "" and data["api_secret"] != "" and data["api_key"] != "":
+            if data["assistant_id"] == "":
+                self.sparkAPI = SparkAPI(
+                    app_id = data["app_id"],
+                    api_secret = data["api_secret"],
+                    api_key = data["api_key"],
+                    version = data["version"]
+                )
+            else:
+                self.sparkAPI = SparkAPI(
+                    app_id = data["app_id"],
+                    api_secret = data["api_secret"],
+                    api_key = data["api_key"],
+                    version = data["version"],
+                    assistant_id = data["assistant_id"]
+                )
         else:
             logging.info("讯飞星火配置为空")
 
 
-    def get_sparkdesk_resp(self, prompt):
+    def get_resp(self, prompt):
         if self.type == "web":
             return self.sparkWeb.chat(prompt)
         elif self.type == "api":

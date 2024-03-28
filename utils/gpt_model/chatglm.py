@@ -22,7 +22,7 @@ class Chatglm:
 
 
     # 调用chatglm接口，获取返回内容
-    def get_chatglm_resp(self, prompt):
+    def get_resp(self, prompt):
         data_json = {
             "prompt": prompt, 
             "history": self.history,
